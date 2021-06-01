@@ -9,6 +9,7 @@ const { sessionSecret } = require('./config');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const {restoreUser} = require("./auth")
 // const { v4: uuidv4 } = require('uuid'); This is what we used to generate sessionSecret
 //console.log(uuidv4());
 const app = express();
@@ -24,7 +25,8 @@ app.use(session({
   secret: sessionSecret,
   resave: false,
   saveUninitialized: false
-}))
+}));
+app.use(restoreUser);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
