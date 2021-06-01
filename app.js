@@ -5,19 +5,26 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const { sequelize } = require('./db/models');
 const session = require('express-session');
+const { sessionSecret } = require('./config');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-
+// const { v4: uuidv4 } = require('uuid'); This is what we used to generate sessionSecret
+//console.log(uuidv4());
 const app = express();
-//a comment so we can see a change
+
 // view engine setup
 app.set('view engine', 'pug');
-
+app.use(cookieParser(sessionSecret));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(session({
+  name: 'Medflow_clinic.sid',
+  secret: sessionSecret,
+  resave: false,
+  saveUninitialized: false
+}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
