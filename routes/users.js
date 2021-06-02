@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const {check, validationResult} = require('express-validator');
 const  bcrypt  = require('bcryptjs');
-const {asyncHandler, handleValidationErrors, csrfProtection} = require('./utils');
+const {asyncHandler, csrfProtection} = require('./utils');
 const { User } = require('../db/models');
-const {restoreUser, loginUser, logoutUser} = require("../auth");
+const { loginUser, logoutUser } = require("../auth");
 
 
 
@@ -12,7 +12,7 @@ const {restoreUser, loginUser, logoutUser} = require("../auth");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) { // User homepage
-  res.send('User HomePage');
+  res.render('layout')
 
 });
 
@@ -81,7 +81,7 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async(req,
     user.hashedPassword = hashedPassword;
     await user.save()
     loginUser(req, res, user)
-    res.redirect('/')
+    res.redirect('/users')
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
     res.render('user-register', {
@@ -94,6 +94,54 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async(req,
 }));
 
 
-router.get('/login')
+router.get('/login', csrfProtection, (req, res) => {
+  
+  res.render('user-login', { title: 'Login', csrfToken: req.csrfToken() });
+});
+
+const loginValidators = [
+  check('email')
+    .exists({checkFalsy: true})
+    .withMessage('Please provide an Email Address'),
+  check('password')
+    .exists({checkFalsy: true})
+    .withMessage('Please provide a Password')
+];
+
+router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, res) => {
+  const { email, password } = req.body;
+
+  let errors = [];
+  const validatorErrors = validationResult(req);
+
+  if (validatorErrors.isEmpty()) {
+    const user = await User.findOne({ where: { email } })
+
+    if(user) {
+      const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+      if (passwordMatch) {
+        loginUser(req, res, user)
+        return res.redirect('/users')
+      }
+    }
+    errors.push('Login failed for the provided email address and password');
+  } else {
+    errors = validatorErrors.array().map((error) => error.msg)
+  }
+
+  res.render('user-login', {
+    title: 'Login',
+    email,
+    errors,
+    csrfToken: req.csrfToken()
+  });
+
+}));
+
+router.post('/logout', (req, res) => {
+  debugger
+  logoutUser(req, res)
+  res.redirect('/')
+});
 
 module.exports = router;
