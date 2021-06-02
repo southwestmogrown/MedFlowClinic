@@ -3,18 +3,28 @@ const router = express.Router();
 const {check, validationResult} = require('express-validator');
 const  bcrypt  = require('bcryptjs');
 const {asyncHandler, csrfProtection} = require('./utils');
-const { User } = require('../db/models');
+const { User, Answer, Question } = require('../db/models');
 const { loginUser, logoutUser } = require("../auth");
 
 
 
 
 
-/* GET users listing. */
-router.get('/', function(req, res, next) { // User homepage
-  res.render('layout')
+router.get('/homepage', asyncHandler(async (req, res) =>  { // User homepage
+  const {userName} = req.body;
+  const user= await User.findOne({
+    where: {
+      userName
+    }
+  })
 
-});
+  const answers = await Answer.findAll({
+    include: Question
+  });
+
+  res.render('users-homepage', { title: "Demo User Homepage" , answers, user });
+}));
+
 
 router.get('/register', csrfProtection, asyncHandler(async(req, res) => { // grabbing the registration page
   const user = {userName: null, email: null};
@@ -67,7 +77,7 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async(req,
   } else {
     professionalUser = false;
   }
-  
+
   const user = await User.build({
     userName,
     email,
@@ -95,7 +105,7 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async(req,
 
 
 router.get('/login', csrfProtection, (req, res) => {
-  
+
   res.render('user-login', { title: 'Login', csrfToken: req.csrfToken() });
 });
 
@@ -121,7 +131,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, r
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
       if (passwordMatch) {
         loginUser(req, res, user)
-        return res.redirect('/users')
+        return res.redirect('/')
       }
     }
     errors.push('Login failed for the provided email address and password');
