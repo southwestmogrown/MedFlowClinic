@@ -42,9 +42,6 @@ router.post('/', csrfProtection, answerValidators, requireAuth, asyncHandler(asy
         })
     }
 
-
-
-
 }));
 
 module.exports = router
