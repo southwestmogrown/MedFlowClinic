@@ -8,22 +8,18 @@ const { loginUser, logoutUser } = require("../auth");
 
 
 
-
-
 router.get('/homepage', asyncHandler(async (req, res) =>  { // User homepage
-  const {userName} = req.body;
-  const user= await User.findOne({
-    where: {
-      userName
-    }
-  })
+  const user = await User.findByPk(1)
 
   const answers = await Answer.findAll({
+    order: [['answer', 'ASC']],
     include: Question
   });
 
-  res.render('users-homepage', { title: "Demo User Homepage" , answers, user });
+
+  res.render('users-homepage', { title: "Demo User Homepage" , answers, user});
 }));
+
 
 
 router.get('/register', csrfProtection, asyncHandler(async(req, res) => { // grabbing the registration page
@@ -153,5 +149,7 @@ router.post('/logout', (req, res) => {
   logoutUser(req, res)
   res.redirect('/')
 });
+
+
 
 module.exports = router;
