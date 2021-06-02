@@ -1,4 +1,12 @@
 extends layout.pug
 
 block content
-    h3= `${user.userName}`
+    h1 #{user.userName}'s Homepage
+    table
+        thead
+            tr Answers
+        tbody
+            each answer in answers
+                tr
+                    td= answer.answer
+                      
