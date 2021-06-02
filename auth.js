@@ -8,7 +8,7 @@ const loginUser = (req, res, user) => { //Logs in user
 
 const requireAuth = (req, res, next) => { //Used for routes that require user to login
     if (!res.locals.authenticated) {
-      return res.redirect('/user/login');
+      return res.redirect('/users/login');
     }
     return next();
 };

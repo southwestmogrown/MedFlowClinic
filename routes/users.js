@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {check} = require('express-validator');
-const bcrypt = require('bcryptjs');
+const  bcrypt  = require('bcryptjs');
 const {asyncHandler, handleValidationErrors, csrfProtection} = require('./utils');
 const { User } = require('../db/models');
 const {restoreUser, loginUser, logoutUser} = require("../auth");
@@ -54,19 +54,20 @@ const userValidators = [
       }),
 ];
 
-router.post('/register', csrfProtection, userValidators, handleValidationErrors, asyncHandler(async(req, res) => { // creates the new user and redirect them to their homepage
+router.post('/register', csrfProtection, asyncHandler(async(req, res) => { // creates the new user and redirect them to their homepage
+  //need to figure out errorValidators, but it is creating a user in the database, just without the constraints
   const {userName, email, password, professionalUser} = req.body
 
-  const hashedPassword = await bcrypt.hashedPassword(password, 10);
-
-  const user = await User.create({
+  console.log(req.body.professionalUser)
+  const user = await User.build({
     userName,
     email,
-    hashedPassword,
     professionalUser
   });
-
-  res.redirect('/users/');
+  const hashedPassword = await bcrypt.hash(password, 10); // fixed syntax issue
+  user.hashedPassword = hashedPassword;
+  await user.save()
+  res.redirect('/');
 
 
 }));

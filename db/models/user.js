@@ -15,8 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:false
     },
     professionalUser: {
-      type:DataTypes.BOOLEAN,
-      allowNull:false
+      type:DataTypes.BOOLEAN // removed not null constraint
     }
   }, {});
   User.associate = function(models) {
