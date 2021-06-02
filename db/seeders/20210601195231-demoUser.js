@@ -5,7 +5,31 @@ module.exports = {
 
       //add demo user
       return queryInterface.bulkInsert('Users', [
-        {userName:"Demo-user", email:"demo@user.com", hashedPassword: "Wordpass", professionalUser: true, createdAt:new Date(), updatedAt:new Date()}
+        {
+          userName:"Demo-user",
+          email:"demo@user.com",
+          hashedPassword: "Wordpass",
+          professionalUser: true,
+          createdAt:new Date(),
+          updatedAt:new Date()
+        },
+        {
+          userName:"brokeMyArm-user",
+          email:"broken@arm.com",
+          hashedPassword: "Wordpass",
+          professionalUser: false,
+          createdAt:new Date(),
+          updatedAt:new Date()
+        },
+        {
+          userName:"armDoctor-user",
+          email:"armDoctor@user.com",
+          hashedPassword: "Wordpass",
+          professionalUser: true,
+          createdAt:new Date(),
+          updatedAt:new Date()
+        },
+
       ], {});
   },
 
