@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const {asyncHandler} = require('./utils');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+//Render 5 most recently asked question
+router.get('/', asyncHandler(async function(req, res, next) {
+  const questions = 
   res.render('index', { title: 'MedFlowClinic Homepage' });
-});
+}));
 
 module.exports = router;
