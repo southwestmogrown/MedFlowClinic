@@ -35,6 +35,8 @@ app.use('/users', usersRouter)
 // set up session middleware
 const store = new SequelizeStore({ db: sequelize });
 
+
+
 app.use(
   session({
     secret: 'superSecret',
