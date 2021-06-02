@@ -16,7 +16,7 @@ const answerValidators = [
 ];
 
 
-router.post('/', csrfProtection, requireAuth, asyncHandler(async(req, res) => {
+router.post('/', csrfProtection, answerValidators, requireAuth, asyncHandler(async(req, res) => {
     const {answer} = req.body
     const newAnswer = await Answer.build({
         answer,
@@ -33,11 +33,18 @@ router.post('/', csrfProtection, requireAuth, asyncHandler(async(req, res) => {
     if(validatorErrors.isEmpty()) {
         await newAnswer.save()
         res.redirect('/')
+    } else {
+        const errors = validatorErrors.array().map((error) => error.msg);
+        res.render('answers', {
+            title: 'Answers',
+            errors,
+            csrfToken: req.csrfToken(),
+        })
     }
 
-    
 
-   
+
+
 }));
 
 module.exports = router
