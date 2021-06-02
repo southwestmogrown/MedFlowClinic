@@ -6,4 +6,5 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'MedFlowClinic Homepage' });
 });
 
+router.post('/')
 module.exports = router;
