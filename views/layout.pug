@@ -4,21 +4,21 @@ html
       block head
         title="Medflow Clinic"
         link(rel='stylesheet' href='/stylesheets/reset.css')
-
-        header(class='nav_bar')
-          div(class='home-container')
-            a(href='/' class='home-button') Home
-          div(class='logout-container') 
-            form(action="users/logout", method="post")   
-              button(type="submit" class='logout-button') Logout
+        link(rel="stylesheet" href="/stylesheets/index.css")
 
   body
+    header(class='nav_bar')
+      div(class='home-container')
+        a(href='/' class='home-button') Home
+      div(class='logout-container') 
+        form(action="users/logout", method="post")   
+          button(type="submit" class='logout-button') Logout
     block content
     if locals.authenticated
       span Welcome #{user.userName}!
       form(action="/users/logout", method="post")
         button(type="submit") Logout
-      a(href="/answers")
+      
     else
       a(href="/users/login") Login
       a(href='/users/register') Register

@@ -11,18 +11,21 @@ const { loginUser, logoutUser } = require("../auth");
 
 
 router.get('/homepage', asyncHandler(async (req, res) =>  { // User homepage
-  const {userName} = req.body;
-  const user= await User.findOne({
-    where: {
-      userName
-    }
-  })
+  // const {userName} = req.body;
+  
+  const user= await User.findByPk(1)
+  console.log(user.userName)
+  // const answers = await Answer.findAll({
+  //   include: Question
+  // });
+  res.send('howdy')
+  // res.render('users-homepage', { title: "Demo User Homepage" , answers, user });
+}));
 
-  const answers = await Answer.findAll({
-    include: Question
-  });
+router.post('/homepage', asyncHandler(async(req, res) => {
+  console.log(User)
+  res.send('howdy')
 
-  res.render('users-homepage', { title: "Demo User Homepage" , answers, user });
 }));
 
 
