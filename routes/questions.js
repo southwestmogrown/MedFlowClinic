@@ -4,3 +4,5 @@ const {check, validationResult} = require('express-validator');
 const {asyncHandler, csrfProtection} = require('./utils');
 const {requireAuth} = require("../auth");
 const {Question} = require("../db/models");
+
+module.exports = router;
