@@ -22,6 +22,7 @@ module.exports = {
         type: Sequelize.STRING.BINARY
       },
       professionalUser: {
+        allowNull: false,
         type: Sequelize.BOOLEAN // removed not null constraint
       },
       createdAt: {

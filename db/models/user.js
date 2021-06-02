@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:false
     },
     professionalUser: {
+      allowNull: false,
       type:DataTypes.BOOLEAN // removed not null constraint
     }
   }, {});

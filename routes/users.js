@@ -17,7 +17,8 @@ router.get('/', function(req, res, next) { // User homepage
 });
 
 router.get('/register', csrfProtection, asyncHandler(async(req, res) => { // grabbing the registration page
-  res.render('user-register', { title: "Registration", csrfToken: req.csrfToken()})
+  const user = {userName: null, email: null};
+  res.render('user-register', { title: "Registration", csrfToken: req.csrfToken(), user})
 }));
 
 const userValidators = [
@@ -58,8 +59,14 @@ const userValidators = [
 
 router.post('/register', csrfProtection, userValidators, asyncHandler(async(req, res) => { // creates the new user and redirect them to their homepage
   //need to figure out errorValidators, but it is creating a user in the database, just without the constraints
-  const {userName, email, password, professionalUser} = req.body
+  const {userName, email, password} = req.body
+  let { professionalUser } = req.body;
 
+  if(professionalUser) {
+    professionalUser = true;
+  } else {
+    professionalUser = false;
+  }
   
   const user = await User.build({
     userName,
