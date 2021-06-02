@@ -23,7 +23,7 @@ module.exports = {
       },
       professionalUser: {
         allowNull: false,
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN // removed not null constraint
       },
       createdAt: {
         allowNull: false,

@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const {check} = require('express-validator');
-const bcrypt = require('bcryptjs');
+const {check, validationResult} = require('express-validator');
+const  bcrypt  = require('bcryptjs');
 const {asyncHandler, handleValidationErrors, csrfProtection} = require('./utils');
 const { User } = require('../db/models');
 const {restoreUser, loginUser, logoutUser} = require("../auth");
+
+
 
 
 
@@ -15,7 +17,8 @@ router.get('/', function(req, res, next) { // User homepage
 });
 
 router.get('/register', csrfProtection, asyncHandler(async(req, res) => { // grabbing the registration page
-  res.render('user-register', { title: "Registration", csrfToken: req.csrfToken()})
+  const user = {userName: null, email: null};
+  res.render('user-register', { title: "Registration", csrfToken: req.csrfToken(), user})
 }));
 
 const userValidators = [
@@ -32,7 +35,7 @@ const userValidators = [
     .isEmail()
     .withMessage("Email address is not a valid email")
     .custom((value) => {
-      return db.User.findOne({ where: { emailAddress: value } })
+      return User.findOne({ where: { email: value } })
       .then((user) => {
         if (user) {
           return Promise.reject('The provided Email Address is already in use by another account');
@@ -54,22 +57,42 @@ const userValidators = [
       }),
 ];
 
-router.post('/register', csrfProtection, userValidators, handleValidationErrors, asyncHandler(async(req, res) => { // creates the new user and redirect them to their homepage
-  const {userName, email, password, professionalUser} = req.body
+router.post('/register', csrfProtection, userValidators, asyncHandler(async(req, res) => { // creates the new user and redirect them to their homepage
+  //need to figure out errorValidators, but it is creating a user in the database, just without the constraints
+  const {userName, email, password} = req.body
+  let { professionalUser } = req.body;
 
-  const hashedPassword = await bcrypt.hashedPassword(password, 10);
-
-  const user = await User.create({
+  if(professionalUser) {
+    professionalUser = true;
+  } else {
+    professionalUser = false;
+  }
+  
+  const user = await User.build({
     userName,
     email,
-    hashedPassword,
     professionalUser
   });
 
-  res.redirect('/users/');
-
-
+  const validatorErrors = validationResult(req)
+  console.log(validatorErrors)
+  if(validatorErrors.isEmpty()){
+    const hashedPassword = await bcrypt.hash(password, 10)
+    user.hashedPassword = hashedPassword;
+    await user.save()
+    loginUser(req, res, user)
+    res.redirect('/')
+  } else {
+    const errors = validatorErrors.array().map((error) => error.msg);
+    res.render('user-register', {
+      title: 'Register',
+      user,
+      errors,
+      csrfToken: req.csrfToken(),
+    });
+  }
 }));
+
 
 router.get('/login')
 

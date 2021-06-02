@@ -1,14 +1,17 @@
 extends layout.pug
 
+include utils.pug
+
 block content
-    form(action="/user/register", method="post")
+    +validationErrorSummary(errors)
+    form(action="/users/register", method="post")
         input(type="hidden", name="_csrf" value=csrfToken)
         label(for="userName") User Name
-        input(type="text" name="userName" id="userName")
+        input(type="text" name="userName" id="userName" value=user.userName)
         label(for="email") Email
-        input(type="text" name="email" id="email")
+        input(type="text" name="email" id="email" value=user.email)
         label(for='professionalUser') Professional User?
-        input(type="checkbox" name="professionalUser" checked=false)
+        input(type="checkbox" name="professionalUser" checked=user.professionalUser)
         label(for="password") Password
         input(type="password" name="password" id="password")
         label(for="confirmPassword") Confirm Password
