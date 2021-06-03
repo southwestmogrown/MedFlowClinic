@@ -1,24 +1,30 @@
 doctype html
 html
+  title MedFlow Clinic
   head
       block head
         title="Medflow Clinic"
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel="stylesheet" href="/stylesheets/index.css")
+        script(src="/javascripts/index.js" type="module" defer)
 
-  body
-    header(class='nav_bar')
-      div(class='home-container')
-        a(href='/' class='home-button') Home
-      div(class='logout-container') 
-        form(action="users/logout", method="post")   
-          button(type="submit" class='logout-button') Logout
-    block content
+  header(class='nav_bar')
+    h1 MedFlowClinic
+    div(class='home-container')
+      a(href='/' class='home-button') Home
     if locals.authenticated
-      span Welcome #{user.userName}!
-      form(action="/users/logout", method="post")
-        button(type="submit") Logout
-      
+      div(class='logout-container')
+        form(action="users/logout", method="post")
+          button(type="submit" class='logout-button') Logout
+      a(href='/users/homepage') User Homepage
     else
-      a(href="/users/login") Login
-      a(href='/users/register') Register
+      div
+        a(href="/users/login") Login
+      div
+        a(href='/users/register') Register
+  block content
+
+//- append head
+  //- add page specific styles by appending to the head
+  //- link(rel='stylesheet' href='/stylesheets/reset.css')
+  //- add page specific js

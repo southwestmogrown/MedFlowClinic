@@ -1,14 +1,9 @@
 extends layout.pug
 
-append head
-  //- add page specific styles by appending to the head
-  //- link(rel='stylesheet' href='/stylesheets/reset.css')
-  //- add page specific js
-  script(src="/javascripts/index.js" type="module" defer)
-
 block content
-  h1= title
-  p Welcome to Medflow Clinic
-  
+  if locals.authenticated
+    span Welcome #{user.userName}!
+  div
   a(href="/answers") Answers
-  a(href='/users/homepage') Homepage
+  div
+  include questions-list

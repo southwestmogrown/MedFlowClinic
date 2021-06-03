@@ -1,23 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const {check, validationResult} = require('express-validator');
-const  bcrypt  = require('bcryptjs');
 const {asyncHandler, csrfProtection} = require('./utils');
+const {check, validationResult} = require('express-validator');
+const bcrypt  = require('bcryptjs');
 const { User, Answer, Question } = require('../db/models');
 const { loginUser, logoutUser } = require("../auth");
 
 
 
 router.get('/homepage', asyncHandler(async (req, res) =>  { // User homepage
-  const user = await User.findByPk(1)
+  const {userId} = req.session.auth
+  const user = await User.findByPk(userId, {include: Answer})
 
   const answers = await Answer.findAll({
     order: [['answer', 'ASC']],
     include: Question
   });
 
-
   res.render('users-homepage', { title: "Demo User Homepage" , answers, user});
+
 }));
 
 
@@ -145,7 +146,6 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, r
 }));
 
 router.post('/logout', (req, res) => {
-  debugger
   logoutUser(req, res)
   res.redirect('/')
 });

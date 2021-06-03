@@ -1,10 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const {asyncHandler} = require('./utils');
+const {Question} = require("../db/models");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'MedFlowClinic Homepage' });
-});
+router.get('/', asyncHandler(async function(req, res, next) {
+  const questions = await Question.findAll({
+    order: [["question", "DESC"]],
+    limit: 5
+  });
 
-router.post('/')
+  res.render('index', { questions, title: 'MedFlow Clinic' });
+
+}));
+
+
 module.exports = router;
