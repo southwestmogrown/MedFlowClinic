@@ -7,7 +7,7 @@ module.exports = {
         {
           comment: "I agree",
           answerId: 3,
-          userId: 5,
+          userId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         }
