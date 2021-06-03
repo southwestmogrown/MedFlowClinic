@@ -1,5 +1,7 @@
 extends layout.pug
 
-block content 
-    p You are not authorized to answer questions 
-    a(href='/') Home
+block content
+    div(class="Unauthorized")
+        p You are not authorized to answer questions
+    div(class="goHome")
+        a(href='/') Home
