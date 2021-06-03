@@ -7,14 +7,13 @@ html
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel="stylesheet" href="/stylesheets/index.css")
         script(src="/javascripts/index.js" type="module" defer)
-
   body
     header(class='nav_bar')
       if locals.authenticated
         span Welcome #{user.userName}!
         div(class='homepage-container')
           a(href="/users/homepage") User Homepage
-        form(action="users/logout", method="post")
+        form(action="/users/logout", method="post")
           div(class='logout-container')
             button(type="submit" class='logout-button') Logout
       else

@@ -5,6 +5,7 @@ block content
   p Welcome to Medflow Clinic
   a(href="/answers") Answers
   a(href='/users/homepage') Homepage
-
+  form(action="users/logout", method="post")
+          div(class='logout-container')
+            button(type="submit" class='logout-button') Logout
   include questions-list
-
