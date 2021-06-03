@@ -1,0 +1,94 @@
+/*
+Nav bar
+icons: user , login, logout search, logo, up/vote down
+fonts, title
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Condensed&display=swap');
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  color: #527273;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav_bar {
+  display: flex;
+  background-color: white;
+  box-sizing: border-box;
+  height: 55px;
+  color: black;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.home-container {
+  align-content: center;
+  margin: 15px;
+}
+
+/* .home-button {
+  padding-bottom: 5px;
+} */
+
+.logout-container {
+  margin: 15px;
+}
+
+button {
+  background-color: #f4825f;
+  border: 1px solid #b53618;
+  padding: 5px 7px 5px 7px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1em;
+}
+
+button:hover {
+  background-color: #1c1e2e;
+  border: 1px solid #1c1e2e;
+  color: white
+}
+
+button:active {
+  background-color: #1c1e2e;
+  border: 1px solid #1c1e2e;
+  color: white
+}
+
+.darkButton {
+  background-color: #1c1e2e;
+  border: 1px solid #1c1e2e;
+  color: white
+}
+
+.darkButton:hover:active {
+  background-color: #4e5060;
+  border: 1px solid #1c1e2e;
+  color: white
+}
+
+input,
+textarea {
+  background-color: white;
+  padding: 5;
+  border: none;
+  box-sizing: border-box;
+  border-bottom: 2px solid black;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+select {
+  padding: 3;
+  box-sizing: border-box;
+  border-bottom: 2px solid black;
+}
+
+label {
+  font-family: 'Roboto Condensed', sans-serif;
+}

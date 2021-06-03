@@ -49,7 +49,9 @@ router.post('/:id(\\d+)/answers', csrfProtection, answerValidators, requireAuth,
 
     if(validatorErrors.isEmpty()) {
         await newAnswer.save();
+
         res.redirect(`/questions/${id}`); //redirect to question page
+
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
         res.render('answers', {
