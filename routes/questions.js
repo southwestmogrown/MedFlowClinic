@@ -14,6 +14,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
     res.render("question-page", {question});
 }));
 
+
 const questionValidator = [
     check("question")
         .exists({checkFalsy: true})
@@ -49,6 +50,6 @@ router.post("/add", csrfProtection, requireAuth, questionValidator, asyncHandler
     }
 }));
 
-router.get('/')
+
 
 module.exports = router;
