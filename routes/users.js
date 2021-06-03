@@ -11,8 +11,8 @@ const session = require('express-session')
 
 router.get('/homepage', asyncHandler(async (req, res) =>  { // User homepage
   const { userId } = req.session.auth
-  // const user = await User.findByPk(userId, {include: Answer})
-  const user = await User.findByPk(1, {include: Answer})
+  const user = await User.findByPk(userId, {include: Answer})
+  // const user = await User.findByPk(1, {include: Answer})
   console.log(user)
   console.log(user.Answers)
   const answers = user.Answers
@@ -151,13 +151,13 @@ router.post('/demo',
     const user = await User.findByPk(1);
     console.log(user)
     loginUser(req, res, user);
-    return res.redirect("/homepage");
+    return res.redirect("/users/homepage");
   })
 );
 
 router.post('/logout', (req, res) => {
   logoutUser(req, res)
-  res.redirect('/')
+  res.redirect('/');
 });
 
 

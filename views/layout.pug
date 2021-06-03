@@ -12,7 +12,7 @@ html
         span Welcome #{user.userName}!
         div(class='homepage-container')
           a(href="/users/homepage") User Homepage
-        form(action="users/logout", method="post")   
+        form(action="/users/logout", method="post")   
           div(class='logout-container') 
             button(type="submit" class='logout-button') Logout
       else
