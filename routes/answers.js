@@ -7,9 +7,9 @@ const {requireAuth} = require("../auth")
 
 //Render answer page for user to input answer
 router.get('/:id(\\d+)/answers', csrfProtection, requireAuth, asyncHandler(async(req, res) => {
-    const question = await Question.findByPk(req.params.id); //find question using :id to extract id
+   const id = req.params.id;
 
-    res.render('answers', { question, title: 'Answers', csrfToken: req.csrfToken() });
+    res.render('answers', { id, title: 'Answers', csrfToken: req.csrfToken() });
 }));
 
 const answerValidators = [
@@ -22,11 +22,11 @@ const answerValidators = [
 router.post('/:id(\\d+)/answers', csrfProtection, answerValidators, requireAuth, asyncHandler(async(req, res) => {
     const {answer} = req.body;
     const {userId} = req.session.auth;
-    const question = await Question.findByPk(req.params.id); //extract number from path to find proper question association
+    const id = req.params.id;
 
     const newAnswer = await Answer.build({
         answer,
-        questionId: question.id, //use question id from question page
+        questionId: id,
         voteCount: 0,
         userId,
         createdAt: new Date(),
@@ -38,7 +38,7 @@ router.post('/:id(\\d+)/answers', csrfProtection, answerValidators, requireAuth,
 
     if(validatorErrors.isEmpty()) {
         await newAnswer.save();
-        res.redirect(`/questions/${question.id}`); //redirect to question page
+        res.redirect(`/questions/${id}`); //redirect to question page
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
         res.render('answers', {
