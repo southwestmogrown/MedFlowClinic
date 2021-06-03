@@ -6,7 +6,7 @@ module.exports = {
       return queryInterface.bulkInsert('Comments', [
         {
           comment: "I agree",
-          answerId: 4,
+          answerId: 2,
           userId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -21,4 +21,3 @@ module.exports = {
 
   }
 };
-
