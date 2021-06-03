@@ -8,17 +8,22 @@ html
 
   body
     header(class='nav_bar')
-      div(class='home-container')
-        a(href='/' class='home-button') Home
-      div(class='logout-container') 
+      if locals.authenticated
+        span Welcome #{user.userName}!
+        div(class='homepage-container')
+          a(href="/users/homepage") User Homepage
         form(action="users/logout", method="post")   
-          button(type="submit" class='logout-button') Logout
+          div(class='logout-container') 
+            button(type="submit" class='logout-button') Logout
+      else
+        div(class='home-container')
+          a(href='/' class='home-button') Home
+        div(class='login-container')
+          a(href="/users/login") Login
+        div(class='demo-container')
+          a(href='/users/demo') Demo User
+        div(class='register-container')
+          a(href='/users/register') Register
     block content
-    if locals.authenticated
-      span Welcome #{user.userName}!
-      form(action="/users/logout", method="post")
-        button(type="submit") Logout
       
-    else
-      a(href="/users/login") Login
-      a(href='/users/register') Register
+      
