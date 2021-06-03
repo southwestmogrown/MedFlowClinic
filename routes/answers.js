@@ -21,11 +21,11 @@ router.post('/', csrfProtection, answerValidators, requireAuth, asyncHandler(asy
 
     const newAnswer = await Answer.build({
         answer,
-        questionId: 1,
-        voteCount: 0,
-        userId: 3,
+        questionId,
+        voteCount,
+        userId,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       });
 
     const validatorErrors = validationResult(req);
