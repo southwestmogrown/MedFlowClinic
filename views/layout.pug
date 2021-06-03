@@ -21,8 +21,11 @@ html
         div(class='login-container')
           a(href="/users/login") Login
         div(class='demo-container')
-          form(action="/users/demo", method="post") 
+          form(action="/users/demo", method="post")
             button(type="submit") Demo User
         div(class='register-container')
           a(href='/users/register') Register
+      div(class="ask-question-container")
+        form(action="/questions/add" method="get")
+          button(type="submit") Ask a question
     block content
