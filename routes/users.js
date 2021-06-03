@@ -146,18 +146,18 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, r
 }));
 
 router.post('/demo',
-  csrfProtection,
+  
   asyncHandler(async(req, res) => {
     const user = await User.findByPk(1);
     console.log(user)
     loginUser(req, res, user);
-    return res.redirect("/homepage");
+    return res.redirect("/users/homepage");
   })
 );
 
 router.post('/logout', (req, res) => {
   logoutUser(req, res)
-  res.redirect('/')
+  res.redirect('/');
 });
 
 

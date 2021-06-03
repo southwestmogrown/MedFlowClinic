@@ -22,7 +22,8 @@ html
         div(class='login-container')
           a(href="/users/login") Login
         div(class='demo-container')
-          a(href='/users/demo') Demo User
+          form(action="/users/demo", method="post") 
+            button(type="submit") Demo User
         div(class='register-container')
           a(href='/users/register') Register
     block content
