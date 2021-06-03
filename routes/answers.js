@@ -18,11 +18,12 @@ const answerValidators = [
 
 router.post('/', csrfProtection, answerValidators, requireAuth, asyncHandler(async(req, res) => {
     const {answer} = req.body
+    const {userId} = req.session.auth;
 
     const newAnswer = await Answer.build({
         answer,
-        questionId,
-        voteCount,
+        questionId: 1, //use question id from question page
+        voteCount: 0,
         userId,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -32,8 +33,8 @@ router.post('/', csrfProtection, answerValidators, requireAuth, asyncHandler(asy
     console.log(validatorErrors)
 
     if(validatorErrors.isEmpty()) {
-        await newAnswer.save()
-        res.redirect('/')
+        await newAnswer.save();
+        res.redirect('/'); //Need 
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
         res.render('answers', {
