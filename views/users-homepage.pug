@@ -4,9 +4,13 @@ block content
     h1 #{user.userName}'s Homepage
     table
         thead
+            tr Questions
+            //if
             tr Answers
         tbody
+            each question in questions
+                tr
+                    td= question.question
             each answer in answers
                 tr
                     td= answer.answer
-                      

@@ -11,14 +11,15 @@ const session = require('express-session')
 
 router.get('/homepage', asyncHandler(async (req, res) =>  { // User homepage
   const { userId } = req.session.auth
-  const user = await User.findByPk(userId, {include: Answer})
+  const user = await User.findByPk(userId, {include: [Answer, Question]})
   // const user = await User.findByPk(1, {include: Answer})
-  console.log(user)
-  console.log(user.Answers)
-  const answers = user.Answers
+
+  const questions = user.Questions;
+  console.log(user);
+  const answers = user.Answers;
 
 
-  res.render('users-homepage', { title: "Demo User Homepage", answers, user});
+  res.render('users-homepage', { title: "Demo User Homepage", answers, questions, user});
 }));
 
 
@@ -88,7 +89,7 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async(req,
     user.hashedPassword = hashedPassword;
     await user.save()
     loginUser(req, res, user)
-    res.redirect('/users')
+    res.redirect('/users/homepage'); //fix redirect to go to /users/homepage instead of /users
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
     res.render('user-register', {
