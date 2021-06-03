@@ -5,8 +5,11 @@ const { asyncHandler, csrfProtection } = require('./utils');
 const { User, Answer, Question } = require('../db/models');
 const {requireAuth} = require("../auth")
 
-router.get('/', csrfProtection, requireAuth, asyncHandler(async(req, res) => {
-    res.render('answers', { title: 'Answers', csrfToken: req.csrfToken() });
+//Render answer page for user to input answer
+router.get('/:id(\\d+)/answers', csrfProtection, requireAuth, asyncHandler(async(req, res) => {
+   const id = req.params.id;
+
+    res.render('answers', { id, title: 'Answers', csrfToken: req.csrfToken() });
 }));
 
 const answerValidators = [
@@ -16,14 +19,16 @@ const answerValidators = [
 ];
 
 
-router.post('/', csrfProtection, answerValidators, requireAuth, asyncHandler(async(req, res) => {
-    const {answer} = req.body
+//post question and redirect to proper question page
+router.post('/:id(\\d+)/answers', csrfProtection, answerValidators, requireAuth, asyncHandler(async(req, res) => {
+    const {answer} = req.body;
 
     const {userId} = req.session.auth;
+    const id = req.params.id;
 
     const newAnswer = await Answer.build({
         answer,
-        questionId: 1, //use question id from question page
+        questionId: id,
         voteCount: 0,
         userId,
         createdAt: new Date(),
@@ -35,7 +40,7 @@ router.post('/', csrfProtection, answerValidators, requireAuth, asyncHandler(asy
 
     if(validatorErrors.isEmpty()) {
         await newAnswer.save();
-        res.redirect('/'); //Need 
+        res.redirect(`/questions/${id}`); //redirect to question page
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
         res.render('answers', {
