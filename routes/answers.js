@@ -9,7 +9,16 @@ const {requireAuth} = require("../auth")
 router.get('/:id(\\d+)/answers', csrfProtection, requireAuth, asyncHandler(async(req, res) => {
    const id = req.params.id;
 
-    res.render('answers', { id, title: 'Answers', csrfToken: req.csrfToken() });
+   const { userId } = req.session.auth;
+
+   const user = await User.findByPk(userId);
+    console.log(user.professionalUser)
+   if(user.professionalUser) {
+       res.render('answers', { id, title: 'Answers', csrfToken: req.csrfToken() });
+   } else {
+       res.render('unauthorized-user')
+   }
+
 }));
 
 const answerValidators = [
