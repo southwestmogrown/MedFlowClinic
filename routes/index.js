@@ -7,7 +7,7 @@ const {Question} = require("../db/models");
 //Render 5 most recently asked question
 router.get('/', asyncHandler(async function(req, res, next) {
   const questions = await Question.findAll({
-    order: [["question", "DESC"]],
+    order: [["createdAt", "DESC"]],
     limit: 5
   });
 
