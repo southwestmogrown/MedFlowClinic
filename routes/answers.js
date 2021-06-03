@@ -18,7 +18,7 @@ const answerValidators = [
 
 router.post('/', csrfProtection, answerValidators, requireAuth, asyncHandler(async(req, res) => {
     const {answer} = req.body
-    
+
     const newAnswer = await Answer.build({
         answer,
         questionId: 1,

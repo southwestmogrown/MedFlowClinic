@@ -1,11 +1,12 @@
 doctype html
 html
+  title MedFlow Clinic
   head
       block head
         title="Medflow Clinic"
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel="stylesheet" href="/stylesheets/index.css")
-
+        script(src="/javascripts/index.js" type="module" defer)
   body
     header(class='nav_bar')
       if locals.authenticated

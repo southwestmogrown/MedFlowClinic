@@ -2,11 +2,6 @@ extends layout.pug
 
 block content
     h1 #{user.userName}'s Homepage
-    table
-        thead
-            tr Answers
-        tbody
-            each answer in answers
-                tr
-                    td= answer.answer
-                      
+    h2
+        div
+        include answers-list.pug
