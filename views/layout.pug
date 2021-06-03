@@ -10,6 +10,8 @@ html
     header(class='nav_bar')
       if locals.authenticated
         span Welcome #{user.userName}!
+        div(class='home-container')
+          a(href='/' class='home-button') Home
         div(class='homepage-container')
           a(href="/users/homepage") User Homepage
         form(action="/users/logout", method="post")   
