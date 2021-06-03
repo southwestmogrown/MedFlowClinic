@@ -18,6 +18,7 @@ const answerValidators = [
 
 router.post('/', csrfProtection, answerValidators, requireAuth, asyncHandler(async(req, res) => {
     const {answer} = req.body
+
     const {userId} = req.session.auth;
 
     const newAnswer = await Answer.build({
@@ -30,7 +31,7 @@ router.post('/', csrfProtection, answerValidators, requireAuth, asyncHandler(asy
       });
 
     const validatorErrors = validationResult(req);
-    console.log(validatorErrors)
+    
 
     if(validatorErrors.isEmpty()) {
         await newAnswer.save();
