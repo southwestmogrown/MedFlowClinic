@@ -18,18 +18,18 @@ const answerValidators = [
 
 router.post('/', csrfProtection, answerValidators, requireAuth, asyncHandler(async(req, res) => {
     const {answer} = req.body
-
-    const newAnswer = await Answer.build({
+    console.log(db.Answer)
+    const newAnswer = await db.Answer.build({
         answer,
-        questionId: 1,
+        questionId: 3,
         voteCount: 0,
-        userId: 3,
+        userId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       });
 
     const validatorErrors = validationResult(req);
-    console.log(validatorErrors)
+    
 
     if(validatorErrors.isEmpty()) {
         await newAnswer.save()
