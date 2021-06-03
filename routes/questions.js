@@ -49,4 +49,6 @@ router.post("/add", csrfProtection, requireAuth, questionValidator, asyncHandler
     }
 }));
 
+router.get('/')
+
 module.exports = router;

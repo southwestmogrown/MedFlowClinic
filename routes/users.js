@@ -128,7 +128,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, r
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
       if (passwordMatch) {
         loginUser(req, res, user)
-        return res.redirect('/users/homepage')
+        return res.redirect('/') //changed from /users/homepage
       }
     }
     errors.push('Login failed for the provided email address and password');
