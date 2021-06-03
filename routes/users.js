@@ -15,11 +15,11 @@ router.get('/homepage', asyncHandler(async (req, res) =>  { // User homepage
   // const user = await User.findByPk(1, {include: Answer})
 
   const questions = user.Questions;
-  console.log(user);
+  const professional = user.professionalUser;
   const answers = user.Answers;
 
 
-  res.render('users-homepage', { title: "Demo User Homepage", answers, questions, user});
+  res.render('users-homepage', { title: "Demo User Homepage", answers, questions, user, professional});
 }));
 
 

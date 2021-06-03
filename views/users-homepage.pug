@@ -5,12 +5,13 @@ block content
     table
         thead
             tr Questions
-            //if
-            tr Answers
+            if professional
+                tr Answers
         tbody
             each question in questions
                 tr
                     td= question.question
-            each answer in answers
-                tr
-                    td= answer.answer
+            if professional
+                each answer in answers
+                    tr
+                        td= answer.answer
