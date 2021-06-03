@@ -146,7 +146,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, r
 }));
 
 router.post('/demo',
-  csrfProtection,
+  
   asyncHandler(async(req, res) => {
     const user = await User.findByPk(1);
     console.log(user)
