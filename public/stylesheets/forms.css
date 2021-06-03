@@ -8,6 +8,7 @@ Log In form
 .registration-form {
     display: flex;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .input {
@@ -36,11 +37,16 @@ Log In form
 }
 
 #professional-check {
-    displaY: flex;
+    display: flex;
     align-items: end;
     margin-bottom: 15px;
 }
 
 #checkbox {
     margin-left: 10px;
+}
+
+.login:hover {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #1c1e2e;
 }
