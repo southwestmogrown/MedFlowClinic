@@ -106,7 +106,8 @@ label {
   background-color: white;
   box-sizing: border-box;
   height: 55px;
-  color: black font-family: 'Roboto Condensed', sans-serif;
+  color: black;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .home-container {
