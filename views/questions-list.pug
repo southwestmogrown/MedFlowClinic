@@ -5,4 +5,5 @@ table(class="questions")
     tbody
         each question in questions
             tr
-                td: a(class="question" href="") #{question.question}
+                td: a(class="question" href=`/questions/${question.id}`) #{question.question}
+
