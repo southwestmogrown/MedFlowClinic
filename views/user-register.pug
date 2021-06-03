@@ -11,8 +11,9 @@ block content
             input(class="input" type="text" name="userName" id="userName" value=user.userName)
             label(class="label" for="email") Email
             input(class="input" type="text" name="email" id="email" value=user.email)
-            label(class="label" for='professionalUser') Professional User?
-            input(type="checkbox" name="professionalUser" checked=user.professionalUser)
+            div(id="professional-check")
+                label(class="label" for='professionalUser') Professional User?
+                input(id="checkbox" type="checkbox" name="professionalUser" checked=user.professionalUser)
             label(id="password-label" class="label" for="password") Password
             input(class="input" type="password" name="password" id="password")
             label(class="label" for="confirmPassword") Confirm Password
