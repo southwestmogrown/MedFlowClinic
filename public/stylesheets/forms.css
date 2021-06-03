@@ -34,6 +34,8 @@ Log In form
 #submit-button {
     width: 100%;
     margin-top: 10px;
+    font-weight: bolder;
+    font-size: larger;
 }
 
 #professional-check {
@@ -50,3 +52,16 @@ Log In form
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: #1c1e2e;
 }
+
+.login-form {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.label {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+
