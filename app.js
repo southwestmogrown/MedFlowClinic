@@ -37,7 +37,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
 app.use('/users', usersRouter)
+
 app.use('/questions', answersRouter) //goes to answer routes which include id of question in path
+
 app.use("/questions", questionsRouter);
 
 
