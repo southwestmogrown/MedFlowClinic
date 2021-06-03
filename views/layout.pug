@@ -12,8 +12,8 @@ html
         span Welcome #{user.userName}!
         div(class='homepage-container')
           a(href="/users/homepage") User Homepage
-        form(action="/users/logout", method="post")   
-          div(class='logout-container') 
+        form(action="/users/logout", method="post")
+          div(class='logout-container')
             button(type="submit" class='logout-button') Logout
       else
         div(class='home-container')
@@ -25,5 +25,3 @@ html
         div(class='register-container')
           a(href='/users/register') Register
     block content
-      
-      
