@@ -5,20 +5,20 @@ const {check, validationResult} = require('express-validator');
 const bcrypt  = require('bcryptjs');
 const { User, Answer, Question } = require('../db/models');
 const { loginUser, logoutUser } = require("../auth");
+const session = require('express-session')
 
 
 
 router.get('/homepage', asyncHandler(async (req, res) =>  { // User homepage
-  const {userId} = req.session.auth
-  const user = await User.findByPk(userId, {include: Answer})
+  const { userId } = req.session.auth
+  // const user = await User.findByPk(userId, {include: Answer})
+  const user = await User.findByPk(1, {include: Answer})
+  console.log(user)
+  console.log(user.Answers)
+  const answers = user.Answers
 
-  const answers = await Answer.findAll({
-    order: [['answer', 'ASC']],
-    include: Question
-  });
 
-  res.render('users-homepage', { title: "Demo User Homepage" , answers, user});
-
+  res.render('users-homepage', { title: "Demo User Homepage", answers, user});
 }));
 
 
@@ -128,7 +128,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, r
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
       if (passwordMatch) {
         loginUser(req, res, user)
-        return res.redirect('/')
+        return res.redirect('/users/homepage')
       }
     }
     errors.push('Login failed for the provided email address and password');
@@ -144,6 +144,16 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, r
   });
 
 }));
+
+router.post('/demo',
+  csrfProtection,
+  asyncHandler(async(req, res) => {
+    const user = await User.findByPk(1);
+    console.log(user)
+    loginUser(req, res, user);
+    return res.redirect("/homepage");
+  })
+);
 
 router.post('/logout', (req, res) => {
   logoutUser(req, res)

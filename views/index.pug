@@ -1,9 +1,10 @@
 extends layout.pug
 
 block content
-  if locals.authenticated
-    span Welcome #{user.userName}!
-  div
+  h1= title
+  p Welcome to Medflow Clinic
   a(href="/answers") Answers
-  div
+  a(href='/users/homepage') Homepage
+
   include questions-list
+
