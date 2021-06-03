@@ -18,9 +18,11 @@ const answerValidators = [
         .withMessage('Please provide an answer')
 ];
 
+
 //post question and redirect to proper question page
 router.post('/:id(\\d+)/answers', csrfProtection, answerValidators, requireAuth, asyncHandler(async(req, res) => {
     const {answer} = req.body;
+
     const {userId} = req.session.auth;
     const id = req.params.id;
 
@@ -34,7 +36,7 @@ router.post('/:id(\\d+)/answers', csrfProtection, answerValidators, requireAuth,
       });
 
     const validatorErrors = validationResult(req);
-    console.log(validatorErrors)
+    
 
     if(validatorErrors.isEmpty()) {
         await newAnswer.save();
