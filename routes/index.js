@@ -14,4 +14,5 @@ router.get('/', asyncHandler(async function(req, res, next) {
   res.render('index', { questions, title: 'MedFlowClinic Homepage' });
 }));
 
+router.post('/')
 module.exports = router;

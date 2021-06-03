@@ -2,15 +2,28 @@ doctype html
 html
   head
       block head
-        title="Express Starter App"
+        title="Medflow Clinic"
         link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel="stylesheet" href="/stylesheets/index.css")
+
   body
+    header(class='nav_bar')
+      if locals.authenticated
+        span Welcome #{user.userName}!
+        div(class='homepage-container')
+          a(href="/users/homepage") User Homepage
+        form(action="users/logout", method="post")   
+          div(class='logout-container') 
+            button(type="submit" class='logout-button') Logout
+      else
+        div(class='home-container')
+          a(href='/' class='home-button') Home
+        div(class='login-container')
+          a(href="/users/login") Login
+        div(class='demo-container')
+          a(href='/users/demo') Demo User
+        div(class='register-container')
+          a(href='/users/register') Register
     block content
-    if locals.authenticated 
-      span Welcome #{user.userName}!
-      form(action="/users/logout", method="post")
-        button(type="submit") Logout
-    else 
-      a(href="/users/login") Login 
-      a(href='/users/register') Register
+      
       

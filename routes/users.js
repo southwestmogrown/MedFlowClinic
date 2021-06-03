@@ -3,18 +3,25 @@ const router = express.Router();
 const {check, validationResult} = require('express-validator');
 const  bcrypt  = require('bcryptjs');
 const {asyncHandler, csrfProtection} = require('./utils');
-const { User } = require('../db/models');
+const { User, Answer, Question } = require('../db/models');
 const { loginUser, logoutUser } = require("../auth");
+const session = require('express-session')
 
 
 
+router.get('/homepage', asyncHandler(async (req, res) =>  { // User homepage
+  const { userId } = req.session.auth
+  // const user = await User.findByPk(userId, {include: Answer})
+  const user = await User.findByPk(1, {include: Answer})
+  console.log(user)
+  console.log(user.Answers)
+  const answers = user.Answers
 
 
-/* GET users listing. */
-router.get('/', function(req, res, next) { // User homepage
-  res.render('layout')
+  res.render('users-homepage', { title: "Demo User Homepage", answers, user});
+}));
 
-});
+
 
 router.get('/register', csrfProtection, asyncHandler(async(req, res) => { // grabbing the registration page
   const user = {userName: null, email: null};
@@ -67,7 +74,7 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async(req,
   } else {
     professionalUser = false;
   }
-  
+
   const user = await User.build({
     userName,
     email,
@@ -95,7 +102,7 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async(req,
 
 
 router.get('/login', csrfProtection, (req, res) => {
-  
+
   res.render('user-login', { title: 'Login', csrfToken: req.csrfToken() });
 });
 
@@ -121,7 +128,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, r
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
       if (passwordMatch) {
         loginUser(req, res, user)
-        return res.redirect('/users')
+        return res.redirect('/users/homepage')
       }
     }
     errors.push('Login failed for the provided email address and password');
@@ -138,10 +145,21 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, r
 
 }));
 
+router.post('/demo',
+  csrfProtection,
+  asyncHandler(async(req, res) => {
+    const user = await User.findByPk(1);
+    console.log(user)
+    loginUser(req, res, user);
+    return res.redirect("/homepage");
+  })
+);
+
 router.post('/logout', (req, res) => {
-  debugger
   logoutUser(req, res)
   res.redirect('/')
 });
+
+
 
 module.exports = router;
