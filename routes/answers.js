@@ -26,7 +26,7 @@ router.post('/', csrfProtection, answerValidators, requireAuth, asyncHandler(asy
         voteCount: 0,
         userId,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       });
 
     const validatorErrors = validationResult(req);
