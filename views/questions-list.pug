@@ -7,8 +7,12 @@ div(class='question-list-container')
                 li.question-info-box
                     div(class='qs-stats-container')
                         div(class='qs-votes-container')
-                            button(type="button" class="upvote-button") Up Vote
-                            span(class='votes-number') 0
-                            button(type="button" class="downvote-button") Down Vote
+                            if locals.authenticated
+                                form(action='/voting/upvote' method='PATCH')
+                                    button(type="submit" class="upvote-button") Up Vote
+                            span(class='votes-number') 0 Votes
+                            if locals.authenticated
+                                form(action='/voting/downvote' method='PATCH')
+                                    button(type="submit" class="downvote-button") Down Vote
                     div(class='question-info')
                             a(class="question" href=`/questions/${question.id}`) #{question.question}
