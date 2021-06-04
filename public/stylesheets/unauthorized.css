@@ -1,9 +1,18 @@
-.Unauthorized {
-    display:flex;
+.unauthorized {
+    display: flex;
     justify-content: center;
 }
 
 .goHome {
-    display:flex;
+    display: flex;
     justify-content: center;
+}
+
+.no-entry {
+    display: flex;
+    justify-content: center;
+}
+
+.unauthorized-text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
