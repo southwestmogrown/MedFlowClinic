@@ -35,23 +35,23 @@ block content
                     //- ul(class='answers box')
                         //- each answer in question.Answers
 
-  //  div(class="question-container")
-        h1 #{question.question}
-        button(id=`question-upvote-${question.id}` type="button" class="question-upvote-button") Up Vote
-        span(id=`question-counter-${question.id}`) #{question.voteCount}
-        button(id=`question-downvote-${question.id}` type="button" class="question-downvote-button") Down Vote
-            ul
-                each answer in question.Answers
-                    li #{answer.answer}
-                    button(id=`answer-upvote-${answer.id}` type="button" class="answer-upvote-button") Up Vote
-                    span(id=`answer-counter-${answer.id}` class="answer-vote-count") #{answer.voteCount}
-                    button(id=`answer-downvote-${answer.id}` type="button" class="answer-downvote-button") Down Vote
-        a(role='button' href=`/questions/${question.id}/answers`) Answer
+//-   //  div(class="question-container")
+//-         h1 #{question.question}
+//-         button(id=`question-upvote-${question.id}` type="button" class="question-upvote-button") Up Vote
+//-         span(id=`question-counter-${question.id}`) #{question.voteCount}
+//-         button(id=`question-downvote-${question.id}` type="button" class="question-downvote-button") Down Vote
+//-             ul
+//-                 each answer in question.Answers
+//-                     li #{answer.answer}
+//-                     button(id=`answer-upvote-${answer.id}` type="button" class="answer-upvote-button") Up Vote
+//-                     span(id=`answer-counter-${answer.id}` class="answer-vote-count") #{answer.voteCount}
+//-                     button(id=`answer-downvote-${answer.id}` type="button" class="answer-downvote-button") Down Vote
+//-         a(role='button' href=`/questions/${question.id}/answers`) Answer
 
 
 
 
-                        
+
 
 //- /*
 //- vivian's
@@ -68,4 +68,3 @@ block content
 //-                 div.answer-container
 //-                     li.answer-info-box #{answer.answer}
 //- */
-
