@@ -1,30 +1,3 @@
-/*MedFlowClinic Styles
-Colors:
-    light aqua: #c3dedf //main background color
-    bright orange: #f4825f      //high contrast
-    dark orange: #b53618 //darker contrast for actions and error text
-    lighter orange: #ffcca9 //background color of error messages
-    dark blue: #1c1e2e
-    dark blue highlight: #4e5060
-    white: #FFFFFF
-    black: #000000
-    grey: medium grey
-    alternate header aqua: #527273
-    alternate header highlight: #778e8f
-
-font-family: 'Roboto Condensed', sans-serif;
-
-font-family: 'Source Sans Pro', sans-serif;
-
-Nav bar
-icons: user , login, logout search, logo, up/vote down
-fonts, title
-
-    //- div(class='ask-question-container')
-    //-   form(action='/questions/add' method='get')
-    //-   button(type='submit') Ask a question
-*/
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Condensed&display=swap');
 a {
   text-decoration: none;
@@ -162,7 +135,6 @@ header {
   align-self: flex-end;
 }
 
-.right-arrow:hover {}
 
 .user-icon {
   width: 40px;
@@ -185,3 +157,4 @@ header {
 /* register-container a:visited {
   color: #1c1e2e;
 } */
+
