@@ -1,9 +1,18 @@
-table(class="questions")
-    thead(class="question")
-        tr
-            th Questions
-    tbody
-        each question in questions
-            tr
-                td: a(class="question" href=`/questions/${question.id}`) #{question.question}
+div(class='question-list-container')
+    div(class='question-list-box')
+        div(class='question-list-header-box')
+            h1.question-form-header Questions
+        ul(class='questions-list')
+            each question in questions
+                li.question-info-box
+                    div(class='qs-stats-container')
+                        div(class='qs-votes-container')
+                            span(class='votes-number') 0
+                            div Up Vote
+                        div(class='qs-votes-container')
+                            span(class='votes-number') 0
+                            div Down Vote
+                    div(class='question-info')
+                            a(class="question" href=`/questions/${question.id}`) #{question.question}
+
 

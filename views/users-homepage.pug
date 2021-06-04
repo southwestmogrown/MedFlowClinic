@@ -1,18 +1,25 @@
 extends layout.pug
 
 block content
-    div(class=(username-header))
-        h1 #{user.userName}'s Homepage
-        table
-            thead
-                tr Questions
-                if professional
-                    tr Answers
-            tbody
+    div(class='user-info-container')
+        div(class='user-personal-info')
+            div(class='user-box')
+                img(src='/images/Doctor-256.png' class='user-headshot')
+            div(class='user-name-info')
+                h1.user-name #{user.userName}'s Homepage
+                p.user-email #{user.email}
+                p.user-info Professional User
+        div(class='user-post-box')
+            div(class='user-post-header')
+                h1.questions Questions
+                    if professionalUser
+                        h1 Answers
+            ul
                 each question in questions
-                    tr
-                        td= question.question
-                if professional
-                    each answer in answers
-                        tr
-                            td= answer.answer
+                    li.post-list: a(href=`/questions/${question.id}`) #{question.question}
+            div(class='user-post-header')
+                h1.answers Answers
+            ul
+                each answer in answers
+                    li.post-list #{answer.answer}
+

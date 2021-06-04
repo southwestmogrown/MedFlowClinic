@@ -7,7 +7,7 @@ const {requireAuth} = require("../auth")
 
 //Render answer page for user to input answer
 router.get('/:id(\\d+)/answers', csrfProtection, requireAuth, asyncHandler(async(req, res) => {
-   const id = req.params.id;
+    const id = req.params.id;
 
    const { userId } = req.session.auth;
 

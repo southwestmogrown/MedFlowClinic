@@ -2,8 +2,9 @@
 Questions form
 Answers form
 Registration form
-Log In form 
+Log In form
 */
+
 
 button {
   background-color: #f4825f;
@@ -56,3 +57,65 @@ select {
 label {
   font-family: 'Roboto Condensed', sans-serif;
 }
+=======
+.registration-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.input {
+    display: grid;
+    grid-template-rows: 25% 25% 25% 25%;
+    box-sizing: content-box;
+    width: 300px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+}
+
+.register {
+    display:flex;
+    justify-content: center;
+}
+
+#submit-button {
+    width: 100%;
+    margin-top: 10px;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+#professional-check {
+    display: flex;
+    align-items: end;
+    margin-bottom: 15px;
+}
+
+#checkbox {
+    margin-left: 10px;
+}
+
+.login:hover {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #1c1e2e;
+}
+
+.login-form {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.label {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+
+
