@@ -11,7 +11,7 @@ a:link {
   text-decoration: none;
 }
 
-<<<<<<< HEAD
+
 a:hover {
   color: #4e5060;
 }
@@ -22,10 +22,7 @@ a:active {
 
 div {
   display: block;
-=======
-div {
-    display: block;
->>>>>>> 075e61e2eb3f1a6dcca7565e410caf2d8de66b2b
+
 }
 
 h1 {
@@ -99,12 +96,10 @@ ul {
   overflow: hidden;
   width: 100%;
 }
-<<<<<<< HEAD
+
 
 .question {
   word-wrap: break-word;
   word-break: break-word;
   padding-bottom: 5px
 }
-=======
->>>>>>> 075e61e2eb3f1a6dcca7565e410caf2d8de66b2b
