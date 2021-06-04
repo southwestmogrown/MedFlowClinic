@@ -1,6 +1,7 @@
 extends layout.pug
 
 block content
+
     div(class="question-container")
         h1 #{question.question}
         span(class="vote-count") #{question.voteCount}
@@ -11,3 +12,19 @@ block content
                     span(class="vote-count") #{answer.voteCount}
                     button(id=`answer-downvote-${answer.id}` type="button" class="downvote-button") Down Vote
         a(role='button' href=`/questions/${question.id}/answers`) Answer
+
+/*
+vivian's 
+    h1.userName #{userQ.userName} asked:
+    div.question-container
+        div(class="question-box")
+            h1.question #{question.question}
+            form(action=`/questions/${question.id}/answers`, method="get") 
+                button(type='submit' class='answer-btn') Answer
+    div.answers
+        ul
+            each answer in question.Answers
+                h1.userNameAnswers #{userA.userName} answered:
+                div.answer-container
+                    li.answer-info-box #{answer.answer}
+*/
