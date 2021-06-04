@@ -6,16 +6,16 @@ window.addEventListener("DOMContentLoaded", (event)=>{
     const upVoteAns = document.querySelectorAll(".answer-upvote-button");
     const downVoteAns = document.querySelectorAll(".answer-downvote-button");
     const counterAns = document.querySelectorAll(".answer-vote-count");
-    console.log(upVote)
-    //console.log(counters)
-    //addEventListener to each upvote and downvote button for questions
+    console.log(upVoteAns)
+    console.log(counterAns)
 
-    for (let i = 0; i < upVote.length; i++) {   //Put eventlistener on each buttons
+    //addEventListener to each upvote and downvote button for questions
+    for (let i = 0; i < upVote.length; i++) {
         upVote[i].addEventListener("click", async (e) => {
             //extract id number from upvote button
-            const upVoteArr = upVote[i].id.split("");
+            const upVoteArr = upVote[i].id.split("-");
             const idNum = parseInt(upVoteArr[upVoteArr.length - 1]);
-            const counter = document.getElementById(`counter-${idNum}`)
+            const counter = document.getElementById(`counter-${idNum}`);
 
             const result = await fetch(`/voting/upvote/${idNum}`, {
                 method: "PATCH"
@@ -27,9 +27,9 @@ window.addEventListener("DOMContentLoaded", (event)=>{
 
         downVote[i].addEventListener("click", async (e) => {
             //extract id number from downvote button
-            const downVoteArr = downVote[i].id.split("");
+            const downVoteArr = downVote[i].id.split("-");
             const idNum = parseInt(downVoteArr[downVoteArr.length - 1]);
-            const counter = document.getElementById(`counter-${idNum}`)
+            const counter = document.getElementById(`counter-${idNum}`);
 
             const result = await fetch(`/voting/downvote/${idNum}`, {
                 method: "PATCH"
@@ -44,20 +44,24 @@ window.addEventListener("DOMContentLoaded", (event)=>{
     //Need to be able to grab the id number at the end of the ids in each answer button
     for (let iAns = 0; iAns < upVoteAns.length; iAns++) {
         upVoteAns[iAns].addEventListener("click", async (e) => {
-            const upVoteArr = upVoteAns[iAns].id.split("");
+            //extract id number from upvote button
+            const upVoteArr = upVoteAns[iAns].id.split("-");
             const idNum = parseInt(upVoteArr[upVoteArr.length - 1]);
+            const counter = document.getElementById(`answer-counter-${idNum}`);
 
             const result = await fetch(`/voting/upvote/answer/${idNum}`, {
                 method: "PATCH"
             });
             const json = await result.json();
 
-            counterAns[iAns].innerHTML = json.voteCount;
+            counter.innerHTML = json.voteCount;
         });
 
         downVoteAns[iAns].addEventListener("click", async (e) => {
-            const downVoteArr = downVoteAns[iAns].id.split("");
+            //extract id number from downvote button
+            const downVoteArr = downVoteAns[iAns].id.split("-");
             const idNum = parseInt(downVoteArr[downVoteArr.length - 1]);
+            const counter = document.getElementById(`answer-counter-${idNum}`);
 
             const result = await fetch(`/voting/downvote/answer/${idNum}`, {
                 method: "PATCH"
@@ -65,7 +69,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
 
             const json = await result.json();
 
-            counterAns[iAns].innerHTML = json.voteCount;
+            counter.innerHTML = json.voteCount;
         });
     }
 
