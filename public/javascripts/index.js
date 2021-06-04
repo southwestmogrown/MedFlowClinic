@@ -1,13 +1,9 @@
 window.addEventListener("DOMContentLoaded", (event)=>{
     const upVote = document.querySelectorAll(".upvote-button");
     const downVote = document.querySelectorAll(".downvote-button");
-    // counters = document.querySelectorAll(".votes-number");
 
     const upVoteAns = document.querySelectorAll(".answer-upvote-button");
     const downVoteAns = document.querySelectorAll(".answer-downvote-button");
-    const counterAns = document.querySelectorAll(".answer-vote-count");
-    console.log(upVoteAns)
-    console.log(counterAns)
 
     //addEventListener to each upvote and downvote button for questions
     for (let i = 0; i < upVote.length; i++) {
@@ -40,8 +36,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
         });
     }
 
-    //addeventlistener to upvote downvote buttons in answers
-    //Need to be able to grab the id number at the end of the ids in each answer button
+    //addeventlistener to upvote downvote buttons for answers
     for (let iAns = 0; iAns < upVoteAns.length; iAns++) {
         upVoteAns[iAns].addEventListener("click", async (e) => {
             //extract id number from upvote button
