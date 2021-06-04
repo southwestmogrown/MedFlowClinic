@@ -9,7 +9,7 @@ window.addEventListener("load", (event)=>{
         });
         const json = await result.json();
 
-        counter.innerHTML = vote.score;
+        counter.innerHTML = json.score;
     });
 
     downVote.addEventListener("click", async (e) => {

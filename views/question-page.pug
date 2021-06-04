@@ -3,7 +3,9 @@ extends layout.pug
 block content
     div(class="question-container")
         h1 #{question.question}
+        span(class="voteCount") #{question.voteCount}
             ul
                 each answer in question.Answers
                     li #{answer.answer}
+                    span(class="voteCount") #{answer.voteCount}
         a(role='button' href=`/questions/${question.id}/answers`) Answer
