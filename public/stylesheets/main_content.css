@@ -3,5 +3,10 @@ Includes: headers, questions, overall body content
 */
 
 body {
-    background-color: #c3dedf;
-  }
+  background-color: #c3dedf;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1 {
+  color: #1c1e2e;
+}
