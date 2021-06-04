@@ -20,18 +20,6 @@ a:hover {
 a:active {
   color: #4e5060
 }
-
-div {
-  display: block;
-
-
-
-a:hover {
-  color: #4e5060;
-
-a:active {
-  color: #4e5060
-}
 h1 {
   line-height: 1.3;
   margin: 0 0 1em;
@@ -117,4 +105,3 @@ ul {
   justify-content: flex-end;
   margin-top: 60px;
 }
-
