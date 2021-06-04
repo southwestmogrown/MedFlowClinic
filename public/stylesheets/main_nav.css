@@ -12,22 +12,10 @@ Colors:
     alternate header aqua: #527273
     alternate header highlight: #778e8f
 
-
-Font: 
-use for:
-Headers and title fonts:
 font-family: 'Roboto Condensed', sans-serif;
-Paragraph and body text:
+
 font-family: 'Source Sans Pro', sans-serif;
 
-link to style guide image:
-/images/style-guide.png
-
-
-*/
-
-
-/*
 Nav bar
 icons: user , login, logout search, logo, up/vote down
 fonts, title
