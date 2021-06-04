@@ -103,3 +103,9 @@ ul {
   word-break: break-word;
   padding-bottom: 5px
 }
+
+.question-userName-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 60px;
+}

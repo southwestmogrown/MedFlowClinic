@@ -127,6 +127,7 @@ label {
     background-color: white;
     color: #b53618;
     width: 300px;
+    border-radius: 5px;
 }
 
 .error-message {
@@ -134,3 +135,25 @@ label {
     font-weight: bold;
 }
 
+.answer-field-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.answer-label {
+  font-weight: bold;
+  font-size: larger;
+  color: #1c1e2e;
+  padding-bottom: 5px;
+}
+
+.answer-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.answer-field {
+  border-radius: 5px;
+}
