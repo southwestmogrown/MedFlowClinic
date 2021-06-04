@@ -1,3 +1,18 @@
 window.addEventListener("load", (event)=>{
-    console.log("hello from javascript!")
+    const upVote = document.querySelector(".upvote-button");
+    const downVote = document.querySelector(".downvote-button");
+    const counter = document.querySelector(".votes-number");
+
+    upVote.addEventListener("click", async (e) => {
+        const result = await fetch("/voting/upvote", {
+            method: "PATCH"
+        });
+        const json = await result.json();
+
+        counter.innerHTML = json.score;
+    });
+
+    downVote.addEventListener("click", async (e) => {
+
+    });
 })

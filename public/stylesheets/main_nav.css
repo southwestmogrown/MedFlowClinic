@@ -12,6 +12,13 @@ Colors:
     alternate header aqua: #527273
     alternate header highlight: #778e8f
 
+<<<<<<< HEAD
+=======
+
+Font:
+use for:
+Headers and title fonts:
+>>>>>>> 075e61e2eb3f1a6dcca7565e410caf2d8de66b2b
 font-family: 'Roboto Condensed', sans-serif;
 
 font-family: 'Source Sans Pro', sans-serif;
@@ -143,7 +150,6 @@ header {
   align-self: flex-end;
 }
 
-.right-arrow:hover {}
 
 .user-icon {
   width: 40px;
@@ -155,7 +161,10 @@ header {
 .register-container {
   margin: 10px;
 }
+<<<<<<< HEAD
 
 register-container a:visited {
   color: #1c1e2e;
 }
+=======
+>>>>>>> 075e61e2eb3f1a6dcca7565e410caf2d8de66b2b
