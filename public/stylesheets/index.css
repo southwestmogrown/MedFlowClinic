@@ -15,8 +15,10 @@ Colors:
 
 Font:
 use for:
-Headers and title fonts: font-family: 'Roboto Condensed', sans-serif;
-Paragraph and body text: font-family: 'Source Sans Pro', sans-serif;
+Headers and title fonts:
+font-family: 'Roboto Condensed', sans-serif;
+Paragraph and body text:
+font-family: 'Source Sans Pro', sans-serif;
 
 link to style guide image:
 /images/style-guide.png
@@ -24,13 +26,13 @@ link to style guide image:
 
 
 
-/* imports*/
-
+/* imports
+*/
+=======
 @import url('reset.css');
 @import url('main_nav.css');
 @import url('main_content.css');
-@import url('question_answers_page.css');
+@import url('questions_answers_page.css');
 @import url('forms.css');
 @import url('user-homepage.css');
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Condensed&display=swap');
