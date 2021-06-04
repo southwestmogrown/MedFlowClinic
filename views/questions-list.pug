@@ -4,15 +4,16 @@ div(class='question-list-container')
             h1.question-form-header Questions
         ul(class='questions-list')
             each question in questions
+                //- h1.userName #{user.userName}
                 li.question-info-box
                     div(class='qs-stats-container')
                         div(class='qs-votes-container')
-                            span(class='votes-number') 0
-                            div Up Vote
-                        div(class='qs-votes-container')
-                            span(class='votes-number') 0
-                            div Down Vote
+                            if locals.authenticated
+                                form(action='/voting/upvote' method='PATCH')
+                                    button(id=`upvote-${question.id}` type="button" class="upvote-button") Up Vote
+                            span(class='votes-number') #{question.voteCount}
+                            if locals.authenticated
+                                form(action='/voting/downvote' method='PATCH')
+                                    button(id=`downvote-${question.id}` type="button" class="downvote-button") Down Vote
                     div(class='question-info')
                             a(class="question" href=`/questions/${question.id}`) #{question.question}
-
-
