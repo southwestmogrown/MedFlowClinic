@@ -21,7 +21,7 @@ vivian's
     div.question-container
         div(class="question-box")
             h1.question #{question.question}
-            form(action=`/questions/${question.id}/answers`, method="get") 
+            form(class='answer-btn-container' action=`/questions/${question.id}/answers`, method="get") 
                 button(type='submit' class='answer-btn') Answer
     div.answers
         ul

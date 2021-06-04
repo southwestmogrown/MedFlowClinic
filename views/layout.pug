@@ -8,42 +8,41 @@ html
         link(rel="stylesheet" href="/stylesheets/index.css")
         script(src="/javascripts/index.js" type="module" defer)
   body
+  if locals.authenticated
     header
       div(class='header_bar')
         div(class='medflow-logo')
           a(href='/' class='home-button') MedFlowClinic
         div(class='navigation-container')
-          div(class='home-container')
-            a(href='/users/homepage')
-              svg(class="home-icon" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" )
-                path(d="M0 0h24v24H0V0z" fill="none")
-                path(d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z")
-              span Home
-        if locals.authenticated
-          div(class='welcome')
-            a(href='/users/homepage')
-              svg(class="user-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000")
-                path(d="M0 0h24v24H0V0z" fill="none")
-                path(d="M10.25 13c0 .69-.56 1.25-1.25 1.25S7.75 13.69 7.75 13s.56-1.25 1.25-1.25 1.25.56 1.25 1.25zM15 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zm7 .25c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2s10 4.48 10 10zM10.66 4.12C12.06 6.44 14.6 8 17.5 8c.46 0 .91-.05 1.34-.12C17.44 5.56 14.9 4 12 4c-.46 0-.91.05-1.34.12zM4.42 9.47c1.71-.97 3.03-2.55 3.66-4.44C6.37 6 5.05 7.58 4.42 9.47zM20 12c0-.78-.12-1.53-.33-2.24-.7.15-1.42.24-2.17.24-3.13 0-5.92-1.44-7.76-3.69C8.69 8.87 6.6 10.88 4 11.86c.01.04 0 .09 0 .14 0 4.41 3.59 8 8 8s8-3.59 8-8z")
-              span(class='username-header') #{user.userName}
+          a(href='/users/homepage')
+            svg(class="user-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000")
+              path(d="M0 0h24v24H0V0z" fill="none")
+              path(d="M10.25 13c0 .69-.56 1.25-1.25 1.25S7.75 13.69 7.75 13s.56-1.25 1.25-1.25 1.25.56 1.25 1.25zM15 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zm7 .25c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2s10 4.48 10 10zM10.66 4.12C12.06 6.44 14.6 8 17.5 8c.46 0 .91-.05 1.34-.12C17.44 5.56 14.9 4 12 4c-.46 0-.91.05-1.34.12zM4.42 9.47c1.71-.97 3.03-2.55 3.66-4.44C6.37 6 5.05 7.58 4.42 9.47zM20 12c0-.78-.12-1.53-.33-2.24-.7.15-1.42.24-2.17.24-3.13 0-5.92-1.44-7.76-3.69C8.69 8.87 6.6 10.88 4 11.86c.01.04 0 .09 0 .14 0 4.41 3.59 8 8 8s8-3.59 8-8z")
+            span(class='nav-link')
+              a(href='/users/homepage') #{user.userName}
           div(class='login-logout-container')
             form(action='/users/logout', method='post')
               button(type="submit" class='logout-button') Logout
-        else
-          div(class='register-container')
+    div(class='welcome')
+      div(class='ask-question-container nav-link')
+        form(action='/questions/add' method='get')
+          button(type='submit') Ask a question
+  else
+    header
+      div(class='header_bar')
+        div(class='medflow-logo')
+          a(href='/' class='home-button') MedFlowClinic
+        div(class='navigation-container')
+          div(class='register-container nav-link')
             a(href='/users/register')
               svg(class="user-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000")
                 path(d="M0 0h24v24H0V0z" fill="none")
                 path(d="M10.25 13c0 .69-.56 1.25-1.25 1.25S7.75 13.69 7.75 13s.56-1.25 1.25-1.25 1.25.56 1.25 1.25zM15 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zm7 .25c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2s10 4.48 10 10zM10.66 4.12C12.06 6.44 14.6 8 17.5 8c.46 0 .91-.05 1.34-.12C17.44 5.56 14.9 4 12 4c-.46 0-.91.05-1.34.12zM4.42 9.47c1.71-.97 3.03-2.55 3.66-4.44C6.37 6 5.05 7.58 4.42 9.47zM20 12c0-.78-.12-1.53-.33-2.24-.7.15-1.42.24-2.17.24-3.13 0-5.92-1.44-7.76-3.69C8.69 8.87 6.6 10.88 4 11.86c.01.04 0 .09 0 .14 0 4.41 3.59 8 8 8s8-3.59 8-8z") 
+            a(href='/users/register')
               span Register /
-              a(href="/users/login")
-                span Login
-          div(class='ask-question-container')
-            form(action='/questions/add' method='get')
-            button(type='submit') Ask a question
-          div(class='demo-container')
-            form(action='/users/demo', method='post')
+            a(href="/users/login")
+              span Login
+          a(href='/users/demo')
+          form(action='/users/demo', method='post')
             button(type='submit') Demo
-            div(class='right-arrow') 
-              a(href='/users/demo') &#62;
-  block content
+block content
