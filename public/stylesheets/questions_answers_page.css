@@ -1,3 +1,70 @@
-/*
-Questions page with answers
-*/
+/* Questions page with answers */
+div {
+    display: block;
+}
+
+.box {
+    width: auto;
+    height: auto;
+}
+
+.box-container {
+    width: auto;
+    height: auto;
+}
+
+
+/* .question-container {
+    display: flex;
+    justify-content: center;
+}
+
+.question {
+    color: #1c1e2e;
+}
+
+.question-box {
+    border-radius: 5px;
+    box-sizing: content-box;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 20px 20px 0px 20px;
+    width: fit-content;
+    border: 1px solid black;
+}
+
+.answer-btn {
+    margin-top: 40px;
+}
+
+.answers {
+    display: flex;
+    justify-content: center;
+}
+
+.answer-container {
+    border-radius: 5px;
+    background-color: white;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 100px;
+    margin: 10px;
+}
+
+.answers-info-box {
+    background-color: white;
+    padding: 24px;
+}
+
+.userName {
+    margin-left: 30px;
+    color: #1c1e2e;
+}
+
+.userNameAnswers {
+    margin-right: 80px;
+    color: #1c1e2e;
+} */

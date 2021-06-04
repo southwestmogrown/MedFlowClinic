@@ -1,11 +1,33 @@
 extends layout.pug
 
 block content
-    div(class="question-container")
-        h1 #{question.question}
-        span(class="voteCount") #{question.voteCount} vote count of question
-            ul
-                each answer in question.Answers
-                    li #{answer.answer}
-                    span(class="voteCount") #{answer.voteCount} vote count of the answer
-        a(role='button' href=`/questions/${question.id}/answers`) Answer
+    div(class='box')
+        div(class='box-container')
+            div(class='left-menu-container')
+                ul(class='menu-content')
+                    a
+            div(class='question-container')
+                div(class='question-box')
+                    div(class='question-header-box')
+                        div(class='answer-button-container')
+                            form(action=`/questions/${question.id}/answers`, method="get")
+                                button(type='submit' class='answer-btn') Answer
+                    div(class='question-body-box')
+                        div(class='vote-container')
+                            div(class='vote-content-box')
+                                div(class='question-upvote-box')
+                                    form(action='/voting/upvote' method='PATCH')
+                                            button(id=`upvote-${question.id}` type="button" class="upvote-button") Up Vote
+                                div(class='question-votes-number') #{question.voteCount} Vote
+                                div(class='question-downvote-box')
+                                    form(action='/voting/downvote' method='PATCH')
+                                            button(id=`downvote-${question.id}` type="button" class="downvote-button") Down Vote
+                        div(class='question-content-container')
+                            div(class='question-container')
+                                div(class='question')
+                                    h1.question #{question.question}
+                        div(class='question-user')
+                            div(class='user-info-box')
+                                div(class='user-info') Asked: #{userQ.userName}
+                    ul(class='answers box')
+                        //- each answer in question.Answers
