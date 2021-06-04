@@ -7,7 +7,7 @@ block content
             ul
                 each answer in question.Answers
                     li #{answer.answer}
-                    button(id=`answer-upvote-${answer.id}` type="button" class="upvote-button") Up Vote
-                    span(class="vote-count") #{answer.voteCount}
-                    button(id=`answer-downvote-${answer.id}` type="button" class="downvote-button") Down Vote
+                    button(id=`answer-upvote-${answer.id}` type="button" class="answer-upvote-button") Up Vote
+                    span(id=`answer-counter-${answer.id}` class="answer-vote-count") #{answer.voteCount}
+                    button(id=`answer-downvote-${answer.id}` type="button" class="answer-downvote-button") Down Vote
         a(role='button' href=`/questions/${question.id}/answers`) Answer
