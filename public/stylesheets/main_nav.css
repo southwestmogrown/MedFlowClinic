@@ -90,14 +90,22 @@ header {
 .navigation-container {
   display: flex;
   justify-content: flex-end;
-  align-items: baseline;
+  align-items: center;
   margin: 0 auto;
   width: 70%;
   /* border: 1px solid red; */
 }
 
+.nav-link a {
+  padding: 10px;
+}
+
 .nav-link a:visited {
   color: #1c1e2e;
+}
+
+.nav-link a:hover {
+  color: #b53618;
 }
 
 .home-icon {
@@ -112,8 +120,16 @@ header {
 }
 
 .login-logout-container {
-  margin: 0px;
   margin: 0 0 0 20px;
+  /* border: 1px solid red; */
+}
+
+.questions {
+  margin-right: 20px;
+}
+
+.login-logout-container button {
+  margin-right: 20px;
   /* border: 1px solid red; */
 }
 
@@ -139,6 +155,9 @@ header {
 }
 
 .ask-question-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
   margin: 3px auto;
   align-self: flex-end;
 }
@@ -148,14 +167,21 @@ header {
 .user-icon {
   width: 40px;
   height: 40px;
-  padding: 0;
+  margin: 0;
   fill: #1c1e2e;
+  display: block;
+}
+
+.user-icon:hover {
+  fill: #b53618;
 }
 
 .register-container {
   margin: 10px;
-}
-
-register-container {
   color: #1c1e2e;
 }
+
+
+/* register-container a:visited {
+  color: #1c1e2e;
+} */
