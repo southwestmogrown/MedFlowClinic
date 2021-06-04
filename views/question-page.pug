@@ -1,11 +1,15 @@
 extends layout.pug
 
 block content
-    div(class="question-container")
-        h1 #{question.question}
-        span(class="voteCount") #{question.voteCount}
-            ul
-                each answer in question.Answers
-                    li #{answer.answer}
-                    span(class="voteCount") #{answer.voteCount}
-        a(role='button' href=`/questions/${question.id}/answers`) Answer
+    h1.userName #{userQ.userName} asked:
+    div.question-container
+        div(class="question-box")
+            h1.question #{question.question}
+            form(action=`/questions/${question.id}/answers`, method="get") 
+                button(type='submit' class='answer-btn') Answer
+    div.answers
+        ul
+            each answer in question.Answers
+                h1.userNameAnswers #{userA.userName} answered:
+                div.answer-container
+                    li.answer-info-box #{answer.answer}
