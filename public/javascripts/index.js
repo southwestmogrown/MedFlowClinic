@@ -1,9 +1,26 @@
 window.addEventListener("DOMContentLoaded", (event)=>{
-    const upVote = document.querySelector(".upvote-button");
-    const downVote = document.querySelector(".downvote-button");
-    const counter = document.querySelector(".votes-number");
+    const upVote = document.querySelectorAll(".upvote-button");
+    const downVote = document.querySelectorAll(".downvote-button");
+    const counter = document.querySelectorAll(".votes-number");
 
-    upVote.addEventListener("click", async (e) => {
+    //addEventListener to each upvote and downvote button
+
+    upVote.forEach((upVoteButton) => {
+        upVoteButton.addEventListener("click", async (e) => {
+            //extract id number from button
+            const upVoteArr = upVoteButton.id.split("");
+            const idNum = parseInt(upVoteArr[upVoteArr.length - 1]);
+
+            const result = await fetch(`/voting/upvote/${idNum}`, {
+                method: "PATCH"
+            });
+            const json = await result.json();
+
+            counter.innerHTML = json.voteCount;
+        });
+    });
+
+    /* upVote.addEventListener("click", async (e) => {
         //extract id number from html
         const upVoteArr = upVote.id.split("");
         const idNum = parseInt(upVoteArr[upVoteArr.length - 1]);
@@ -14,9 +31,9 @@ window.addEventListener("DOMContentLoaded", (event)=>{
         const json = await result.json();
 
         counter.innerHTML = json.voteCount;
-    });
+    }); */
 
-    downVote.addEventListener("click", async (e) => {
+    /* downVote.addEventListener("click", async (e) => {
         const upVoteArr = upVote.id.split("");
         const idNum = parseInt(upVoteArr[upVoteArr.length - 1]);
 
@@ -26,5 +43,5 @@ window.addEventListener("DOMContentLoaded", (event)=>{
         const json = await result.json();
 
         counter.innerHTML = json.voteCount;
-    });
+    }); */
 })
