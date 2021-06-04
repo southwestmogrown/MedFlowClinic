@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Condensed&display=swap');
 a {
   text-decoration: none;
@@ -63,12 +64,11 @@ header {
 .navigation-container {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: baseline;
   margin: 0 auto;
   width: 70%;
   /* border: 1px solid red; */
 }
-
 .nav-link a {
   padding: 10px;
 }
@@ -139,9 +139,9 @@ header {
 .user-icon {
   width: 40px;
   height: 40px;
-  margin: 0;
+  padding: 0;
   fill: #1c1e2e;
-  display: block;
+  margin: 0;
 }
 
 .user-icon:hover {
@@ -153,8 +153,13 @@ header {
   color: #1c1e2e;
 }
 
+register-container {
+  color: #1c1e2e;
+}
+
 
 /* register-container a:visited {
   color: #1c1e2e;
 } */
+
 
