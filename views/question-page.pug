@@ -5,10 +5,13 @@ block content
         div(class='box-container')
             div(class='left-menu-container')
                 ul(class='menu-content')
-                    a
+                    form(action='/questions/add' method='get')
+                        button(type='submit') Ask a Question
             div(class='question-container')
                 div(class='question-box')
                     div(class='question-header-box')
+                        div
+                            h1 #{userQ.userName}'s Question
                         div(class='answer-button-container')
                             form(action=`/questions/${question.id}/answers`, method="get")
                                 button(type='submit' class='answer-btn') Answer
@@ -26,12 +29,16 @@ block content
                             div(class='question-container')
                                 div(class='question')
                                     h1.question #{question.question}
-                        div(class='question-user')
-                            div(class='user-info-box')
-                                div(class='user-info') Asked: #{userQ.userName}
-                    ul(class='answers box')
+                            div(class='question-user')
+                                div(class='user-info-box')
+                                    div(class='user-info') Asked: #{userQ.createdAt}
+                    //- ul(class='answers box')
                         //- each answer in question.Answers
 
+
+
+                        
+//- Richard's
 //-     div(class="question-container")
 //-         h1 #{question.question}
 //-         span(class="vote-count") #{question.voteCount}
