@@ -17,7 +17,6 @@ router.get('/homepage', asyncHandler(async (req, res) =>  { // User homepage
   const questions = user.Questions;
   const professional = user.professionalUser;
   const answers = user.Answers;
-  const userName = user.userName;
   
 
 

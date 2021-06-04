@@ -8,13 +8,18 @@ const {Question, Answer, User} = require("../db/models");
 //get question by id and render a page with the question and its answers
 router.get("/:id(\\d+)", asyncHandler(async (req, res) => {
     const question = await Question.findByPk(req.params.id, {
-        include: Answer,
+        include: Answer
     });
+
     const questionId = question.id;
-    const answer = await Answer.findOne({where: {questionId}});
-    const answerUserId = answer.userId;
     const questionUserId = question.userId;
     const userQ = await User.findByPk(questionUserId);
+    const answer = await Answer.findOne({where: {questionId}});
+    if(!answer) {
+        res.render("question-page", {question, userQ});
+    }
+    const answerUserId = answer.userId;
+    console.log(answerUserId)
     const userA = await User.findByPk(answerUserId);
     res.render("question-page", {question, userQ, userA});
 }));
@@ -54,6 +59,7 @@ router.post("/add", csrfProtection, requireAuth, questionValidator, asyncHandler
         });
     }
 }));
+
 
 
 module.exports = router;

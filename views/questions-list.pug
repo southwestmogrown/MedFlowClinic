@@ -4,7 +4,6 @@ div(class='question-list-container')
             h1.question-form-header Questions
         ul(class='questions-list')
             each question in questions
-                //- h1.userName #{user.userName}
                 li.question-info-box
                     div(class='qs-stats-container')
                         div(class='qs-votes-container')
@@ -17,3 +16,6 @@ div(class='question-list-container')
                                     button(id=`downvote-${question.id}` type="button" class="downvote-button") Down Vote
                     div(class='question-info')
                             a(class="question" href=`/questions/${question.id}`) #{question.question}
+                            div.question-userName-container
+                                p(class='question-userName') #{question.User}
+                                
