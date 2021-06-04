@@ -5,6 +5,59 @@ Registration form
 Log In form
 */
 
+
+button {
+  background-color: #f4825f;
+  border: 1px solid #b53618;
+  padding: 5px 7px 5px 7px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1em;
+}
+
+button:hover {
+  background-color: #1c1e2e;
+  border: 1px solid #1c1e2e;
+  color: white
+}
+
+button:active {
+  background-color: #1c1e2e;
+  border: 1px solid #1c1e2e;
+  color: white
+}
+
+.darkButton {
+  background-color: #1c1e2e;
+  border: 1px solid #1c1e2e;
+  color: white
+}
+
+.darkButton:hover:active {
+  background-color: #4e5060;
+  border: 1px solid #1c1e2e;
+  color: white
+}
+
+input,
+textarea {
+  background-color: white;
+  padding: 5;
+  border: none;
+  box-sizing: border-box;
+  border-bottom: 2px solid black;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+select {
+  padding: 3;
+  box-sizing: border-box;
+  border-bottom: 2px solid black;
+}
+
+label {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
 .registration-form {
     display: flex;
     justify-content: center;
@@ -63,5 +116,3 @@ Log In form
     font-size: larger;
     font-weight: bolder;
 }
-
-
