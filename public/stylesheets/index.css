@@ -13,23 +13,18 @@ Colors:
     alternate header highlight: #778e8f
 
 
-Font: 
+Font:
 use for:
 Headers and title fonts: font-family: 'Roboto Condensed', sans-serif;
 Paragraph and body text: font-family: 'Source Sans Pro', sans-serif;
 
 link to style guide image:
 /images/style-guide.png
-
-
 */
 
 
 
-/* imports
-*/
-
-
+/* imports*/
 
 @import url('reset.css');
 @import url('main_nav.css');
