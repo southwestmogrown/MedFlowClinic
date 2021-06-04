@@ -3,9 +3,11 @@ extends layout.pug
 block content
     div(class="question-container")
         h1 #{question.question}
-        span(class="voteCount") #{question.voteCount}
+        span(class="vote-count") #{question.voteCount}
             ul
                 each answer in question.Answers
                     li #{answer.answer}
-                    span(class="voteCount") #{answer.voteCount}
+                    button(id=`answer-upvote-${answer.id}` type="button" class="upvote-button") Up Vote
+                    span(class="vote-count") #{answer.voteCount}
+                    button(id=`answer-downvote-${answer.id}` type="button" class="downvote-button") Down Vote
         a(role='button' href=`/questions/${question.id}/answers`) Answer
