@@ -36,6 +36,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
         });
     }
 
+
     //addeventlistener to upvote downvote buttons for answers
     for (let iAns = 0; iAns < upVoteAns.length; iAns++) {
         upVoteAns[iAns].addEventListener("click", async (e) => {
@@ -69,3 +70,5 @@ window.addEventListener("DOMContentLoaded", (event)=>{
     }
 
 });
+
+
