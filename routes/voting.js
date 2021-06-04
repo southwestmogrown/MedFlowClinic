@@ -7,8 +7,10 @@ const {requireAuth} = require("../auth");
 const vote = {score: 0};
 
 router.patch("/upvote", requireAuth, asyncHandler(async (req, res) => {
-    vote.score += 1
-    res.json({score: vote.score});
+    vote.score += 1;
+    const voteCount = req.body;
+    console.log(req.body);
+    res.json(vote);
 }));
 
 
