@@ -4,7 +4,11 @@ window.addEventListener("load", (event)=>{
     const counter = document.querySelector(".votes-number");
 
     upVote.addEventListener("click", async (e) => {
-        const result = await fetch("/voting/upvote", {
+        //extract id number from html
+        const upVoteArr = upVote.id.split("");
+        const idNum = parseInt(upVoteArr[upVoteArr.length - 1]);
+
+        const result = await fetch(`/voting/upvote/${idNum}`, {
             method: "PATCH"
         });
         const json = await result.json();
