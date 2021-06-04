@@ -1,7 +1,7 @@
 mixin validationErrorSummary(errors)
   if errors
-    div(class='alert alert-danger' role='alert')
-      p The following error(s) occurred:
+    div(class='error-message')
+      p(class='error-message') The following error(s) occurred:
       ul
         each error in errors
-          li= error
+          li(class='error-message')= error

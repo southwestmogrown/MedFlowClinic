@@ -10,6 +10,7 @@ router.get('/', asyncHandler(async function(req, res, next) {
     order: [["createdAt", "DESC"]],
     limit: 10
   });
+  
 
   res.render('index', { questions, title: 'MedFlowClinic Homepage' });
 }));

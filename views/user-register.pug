@@ -3,7 +3,9 @@ extends layout.pug
 include utils.pug
 
 block content
-    +validationErrorSummary(errors)
+    div(class='errors')
+        div(class='errors-container')
+            +validationErrorSummary(errors)
     div(class="registration-form")
         form(action="/users/register", method="post")
             input(class="input" type="hidden", name="_csrf" value=csrfToken)
