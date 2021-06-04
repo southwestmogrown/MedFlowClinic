@@ -3,9 +3,9 @@ extends layout.pug
 block content
     div(class="question-container")
         h1 #{question.question}
-        button(id=`upvote-${question.id}` type="button" class="upvote-button") Up Vote
-        span(id=`counter-${question.id}` class="vote-count") #{question.voteCount}
-        button(id=`downvote-${question.id}` type="button" class="downvote-button") Down Vote
+        button(id=`question-upvote-${question.id}` type="button" class="question-upvote-button") Up Vote
+        span(id=`question-counter-${question.id}`) #{question.voteCount}
+        button(id=`question-downvote-${question.id}` type="button" class="question-downvote-button") Down Vote
             ul
                 each answer in question.Answers
                     li #{answer.answer}

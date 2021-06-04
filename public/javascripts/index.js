@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", (event)=>{
-    const upVote = document.querySelectorAll(".upvote-button");
-    const downVote = document.querySelectorAll(".downvote-button");
+    const upVote = document.querySelectorAll(".question-upvote-button");
+    const downVote = document.querySelectorAll(".question-downvote-button");
 
     const upVoteAns = document.querySelectorAll(".answer-upvote-button");
     const downVoteAns = document.querySelectorAll(".answer-downvote-button");
@@ -11,9 +11,9 @@ window.addEventListener("DOMContentLoaded", (event)=>{
             //extract id number from upvote button
             const upVoteArr = upVote[i].id.split("-");
             const idNum = parseInt(upVoteArr[upVoteArr.length - 1]);
-            const counter = document.getElementById(`counter-${idNum}`);
+            const counter = document.getElementById(`question-counter-${idNum}`);
 
-            const result = await fetch(`/voting/upvote/${idNum}`, {
+            const result = await fetch(`/voting/upvote/question/${idNum}`, {
                 method: "PATCH"
             });
             const json = await result.json();
@@ -25,9 +25,9 @@ window.addEventListener("DOMContentLoaded", (event)=>{
             //extract id number from downvote button
             const downVoteArr = downVote[i].id.split("-");
             const idNum = parseInt(downVoteArr[downVoteArr.length - 1]);
-            const counter = document.getElementById(`counter-${idNum}`);
+            const counter = document.getElementById(`question-counter-${idNum}`);
 
-            const result = await fetch(`/voting/downvote/${idNum}`, {
+            const result = await fetch(`/voting/downvote/question/${idNum}`, {
                 method: "PATCH"
             });
             const json = await result.json();
