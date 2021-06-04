@@ -7,8 +7,8 @@ div(class='question-list-container')
                 li.question-info-box
                     div(class='qs-stats-container')
                         div(class='qs-votes-container')
-                            button(type="button" class="upvote-button") Up Vote
+                            button(id=`upvote-${question.id}` type="button" class="upvote-button") Up Vote
                             span(class='votes-number') 0
-                            button(type="button" class="downvote-button") Down Vote
+                            button(id=`downvote-${question.id}` type="button" class="downvote-button") Down Vote
                     div(class='question-info')
                             a(class="question" href=`/questions/${question.id}`) #{question.question}
