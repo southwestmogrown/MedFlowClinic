@@ -8,9 +8,7 @@ body {
 }
 
 
-
-
-  div {
+div {
     display: block;
 }
 
@@ -91,4 +89,3 @@ ul {
     word-break: break-word;
     padding-bottom: 5px
 }
-

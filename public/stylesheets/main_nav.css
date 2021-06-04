@@ -13,7 +13,7 @@ Colors:
     alternate header highlight: #778e8f
 
 
-Font: 
+Font:
 use for:
 Headers and title fonts:
 font-family: 'Roboto Condensed', sans-serif;
@@ -131,7 +131,6 @@ header {
   align-self: flex-end;
 }
 
-.right-arrow:hover {}
 
 .user-icon {
   margin: auto 3px;
