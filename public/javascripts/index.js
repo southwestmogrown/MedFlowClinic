@@ -5,10 +5,10 @@ window.addEventListener("DOMContentLoaded", (event)=>{
 
     //addEventListener to each upvote and downvote button
 
-    upVote.forEach((upVoteButton) => {
-        upVoteButton.addEventListener("click", async (e) => {
+    for (let i = 0; i < upVote.length; i++) {   //Put eventlistener on each button available
+        upVote[i].addEventListener("click", async (e) => {
             //extract id number from button
-            const upVoteArr = upVoteButton.id.split("");
+            const upVoteArr = upVote[i].id.split("");
             const idNum = parseInt(upVoteArr[upVoteArr.length - 1]);
 
             const result = await fetch(`/voting/upvote/${idNum}`, {
@@ -16,22 +16,9 @@ window.addEventListener("DOMContentLoaded", (event)=>{
             });
             const json = await result.json();
 
-            counter.innerHTML = json.voteCount;
+            counter[i].innerHTML = json.voteCount;
         });
-    });
-
-    /* upVote.addEventListener("click", async (e) => {
-        //extract id number from html
-        const upVoteArr = upVote.id.split("");
-        const idNum = parseInt(upVoteArr[upVoteArr.length - 1]);
-
-        const result = await fetch(`/voting/upvote/${idNum}`, {
-            method: "PATCH"
-        });
-        const json = await result.json();
-
-        counter.innerHTML = json.voteCount;
-    }); */
+    }
 
     /* downVote.addEventListener("click", async (e) => {
         const upVoteArr = upVote.id.split("");
