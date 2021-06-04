@@ -7,28 +7,27 @@ html
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel="stylesheet" href="/stylesheets/index.css")
         script(src="/javascripts/index.js" type="module" defer)
-  body
-    header(class='nav_bar')
-      if locals.authenticated
-        span Welcome #{user.userName}!
-        div(class='home-container')
-          a(href='/' class='home-button') Home
-        div(class='homepage-container')
-          a(href="/users/homepage") User Homepage
-        form(action="/users/logout", method="post")
-          div(class='logout-container')
-            button(type="submit" class='logout-button') Logout
-      else
-        div(class='home-container')
-          a(href='/' class='home-button') Home
-        div(class='login-container')
-          a(href="/users/login") Login
-        div(class='demo-container')
-          form(action="/users/demo", method="post")
-            button(type="submit") Demo User
-        div(class='register-container')
-          a(href='/users/register') Register
-      div(class="ask-question-container")
-        form(action="/questions/add" method="get")
-          button(type="submit") Ask a question
-    block content
+  header(class='nav_bar')
+    if locals.authenticated
+      span Welcome #{user.userName}!
+      div(class='home-container')
+        a(href='/' class='home-button') Home
+      div(class='homepage-container')
+        a(href="/users/homepage") User Homepage
+      form(action="/users/logout", method="post")
+        div(class='logout-container')
+          button(type="submit" class='logout-button') Logout
+    else
+      div(class='home-container')
+        a(href='/' class='home-button') Home
+      div(class='login-container')
+        a(href="/users/login") Login
+      div(class='demo-container')
+        form(action="/users/demo", method="post")
+          button(type="submit") Demo User
+      div(class='register-container')
+        a(href='/users/register') Register
+    div(class="ask-question-container")
+      form(action="/questions/add" method="get")
+        button(type="submit") Ask a question
+  block content
