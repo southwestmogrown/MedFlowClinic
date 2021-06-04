@@ -35,15 +35,4 @@ window.addEventListener("DOMContentLoaded", (event)=>{
         });
     }
 
-    /* downVote.addEventListener("click", async (e) => {
-        const upVoteArr = upVote.id.split("");
-        const idNum = parseInt(upVoteArr[upVoteArr.length - 1]);
-
-        const result = await fetch(`/voting/downvote/${idNum}`, {
-            method: "PATCH"
-        });
-        const json = await result.json();
-
-        counter.innerHTML = json.voteCount;
-    }); */
 })
