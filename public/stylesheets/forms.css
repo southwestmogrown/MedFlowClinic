@@ -57,7 +57,7 @@ select {
 label {
   font-family: 'Roboto Condensed', sans-serif;
 }
-=======
+
 .registration-form {
     display: flex;
     justify-content: center;
@@ -117,5 +117,19 @@ label {
     font-weight: bolder;
 }
 
+.errors {
+    display: flex;
+    justify-content: center;
+}
 
+.errors-container {
+    background-color: white;
+    color: #b53618;
+    width: 300px;
+}
+
+.error-message {
+    font-size: medium;
+    font-weight: bold;
+}
 
