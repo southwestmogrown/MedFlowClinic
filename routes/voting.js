@@ -4,16 +4,22 @@ const {asyncHandler} = require('./utils');
 const {Question, Answer, User} = require("../db/models");
 const {requireAuth} = require("../auth");
 
-const vote = {score: 0};
+router.patch("/upvote/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
+    const question = await Question.findByPk(req.params.id);
 
-router.patch("/upvote", requireAuth, asyncHandler(async (req, res) => {
+    question.voteCount += 1;
+    question.save({fields: ["voteCount"]});
 
-    vote.score += 1;
-    /*const voteCount = req.body;
-    console.log(req.body);*/
-    res.json({score: vote.score});
+    res.json(question);
 }));
 
+router.patch("/downvote/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
+    const question = await Question.findByPk(req.params.id);
 
+    question.voteCount -= 1;
+    question.save({fields: ["voteCount"]});
+
+    res.json(question);
+}));
 
 module.exports = router;
