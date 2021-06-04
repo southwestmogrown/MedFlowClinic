@@ -123,7 +123,7 @@ header {
 
 .login-logout-container {
   margin: 0px;
-  margin: auto 5px;
+  margin: 0 0 0 20px;
   /* border: 1px solid red; */
 }
 
@@ -165,7 +165,7 @@ header {
   margin: 10px;
 }
 
-register-container a:visited {
+register-container {
   color: #1c1e2e;
 }
 
