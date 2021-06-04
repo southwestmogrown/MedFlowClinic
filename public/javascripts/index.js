@@ -1,3 +1,6 @@
 window.addEventListener("load", (event)=>{
-    console.log("hello from javascript!")
+    const upVote = document.querySelector(".upvote-button");
+    upVote.addEventListener("click", (e) => {
+        console.log('FFFF');
+    });
 })
