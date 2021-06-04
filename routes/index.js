@@ -8,7 +8,7 @@ const {Question} = require("../db/models");
 router.get('/', asyncHandler(async function(req, res, next) {
   const questions = await Question.findAll({
     order: [["createdAt", "DESC"]],
-    limit: 5
+    limit: 10
   });
 
   res.render('index', { questions, title: 'MedFlowClinic Homepage' });

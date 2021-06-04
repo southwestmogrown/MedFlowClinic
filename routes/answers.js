@@ -7,12 +7,12 @@ const {requireAuth} = require("../auth")
 
 //Render answer page for user to input answer
 router.get('/:id(\\d+)/answers', csrfProtection, requireAuth, asyncHandler(async(req, res) => {
-   const id = req.params.id;
+    const id = req.params.id;
 
    const { userId } = req.session.auth;
 
    const user = await User.findByPk(userId);
-    console.log(user.professionalUser)
+
    if(user.professionalUser) {
        res.render('answers', { id, title: 'Answers', csrfToken: req.csrfToken() });
    } else {
@@ -45,7 +45,7 @@ router.post('/:id(\\d+)/answers', csrfProtection, answerValidators, requireAuth,
       });
 
     const validatorErrors = validationResult(req);
-    
+
 
     if(validatorErrors.isEmpty()) {
         await newAnswer.save();
