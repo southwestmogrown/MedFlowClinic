@@ -8,8 +8,8 @@ window.addEventListener("load", (event)=>{
             method: "PATCH"
         });
         const json = await result.json();
-        counter
-        counter.innerHTML = vote.score;
+
+        counter.innerHTML = json.score;
     });
 
     downVote.addEventListener("click", async (e) => {
