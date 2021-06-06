@@ -17,7 +17,7 @@ header {
   color: black;
   font-family: 'Roboto Condensed', sans-serif;
   /* border: 1px solid red; */
-  width: 90%;
+  width: 100%;
   background-color: #ffffff;
   margin: 10px auto;
 }
@@ -161,5 +161,3 @@ register-container {
 /* register-container a:visited {
   color: #1c1e2e;
 } */
-
-
