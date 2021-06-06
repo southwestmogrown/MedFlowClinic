@@ -1,21 +1,39 @@
-div(class='question-list-container')
-    div(class='question-list-box')
-        div(class='question-list-header-box')
-            h1.question-form-header Questions
-        ul(class='questions-list')
-            each question in questions
-                li.question-info-box
-                    div(class='qs-stats-container')
-                        div(class='qs-votes-container')
-                            if locals.authenticated
-                                form(action='/voting/upvote/question' method='PATCH')
-                                    button(id=`question-upvote-${question.id}` type="button" class="question-upvote-button") Up Vote
-                            span(id=`question-counter-${question.id}` class='votes-number') #{question.voteCount}
-                            if locals.authenticated
-                                form(action='/voting/downvote/question' method='PATCH')
-                                    button(id=`question-downvote-${question.id}` type="button" class="question-downvote-button") Down Vote
-                    div(class='question-info')
-                            a(class="question" href=`/questions/${question.id}`) #{question.question}
-                            div.question-userName-container
-                                p(class='question-userName') #{question.User}
-                                
+html
+    script(src=src='https://kit.fontawesome.com/a076d05399.js')
+    div(class='box-container')
+        div(class='page')
+            div(class='left-menu-container')
+                form(action='/questions/add' method='get')
+                    button(class='ask-question-button' type='submit') Ask a Question
+            div(class='question-container')
+                div(class='question-box')
+                    div(class='question-header')
+                        h1 All Questions
+                    div(class='question-body-box')
+                        div(class='vote-container')
+                            div(class='question-body')
+                    ul(class='questions-list')
+                        each question in questions
+                            li.question-info-box
+                                div(class='qs-stats-container')
+                                    div(class='qs-votes-container')
+                                        if locals.authenticated
+                                            form(action='/voting/upvote/question' method='PATCH')
+                                                //- button(id=`question-upvote-${question.id}` type="button" class="question-upvote-button") Up Vote
+                                                i(class='fas fa-caret-up' style='font-size:50px' id=`question-upvote-${question.id}` type="button" class="question-upvote-button")
+                                        span(id=`question-counter-${question.id}` class='votes-number') #{question.voteCount} Votes
+                                        if locals.authenticated
+                                            form(action='/voting/downvote/question' method='PATCH')
+                                                //- button(id=`question-downvote-${question.id}` type="button" class="question-downvote-button") Down Vote
+                                                i(class='fas fa-caret-down' style='font-size:50px' id=`question-downvote-${question.id}` type="button" class="question-downvote-button")
+                                div(class='question-info')
+                                        a(class="question" href=`/questions/${question.id}`) #{question.question}
+                                        div.question-userName-container
+                                            p(class='question-userName') Asked By: #{question.User}
+        footer(class='footer-container')
+            div(class='developed')
+                h1 Developed by:
+                    a(href='https://github.com/rzh150030') Richard Huang,
+                    a(href='https://github.com/southwestmogrown') Shane Wilkey,
+                    a(href='https://github.com/Taylor-H') Taylor Pell,
+                    a(href='https://github.com/itsvivrant') Vivian Ngoc Che
