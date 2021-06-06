@@ -1,70 +1,60 @@
 extends layout.pug
 
 block content
-    div(class='box')
+    script(src=src='https://kit.fontawesome.com/a076d05399.js')
+        script(src=src='https://kit.fontawesome.com/a076d05399.js')
         div(class='box-container')
-            div(class='left-menu-container')
-                ul(class='menu-content')
+            div(class='page')
+                div(class='left-menu-container')
                     form(action='/questions/add' method='get')
-                        button(type='submit') Ask a Question
-            div(class='question-container')
-                div(class='question-box')
-                    div(class='question-header-box')
-                        div
-                            h1 #{userQ.userName}'s Question
-                        div(class='answer-button-container')
-                            form(action=`/questions/${question.id}/answers`, method="get")
-                                button(type='submit' class='answer-btn') Answer
-                    div(class='question-body-box')
-                        div(class='vote-container')
-                            div(class='vote-content-box')
-                                div(class='question-upvote-box')
-                                    form(action='/voting/upvote' method='PATCH')
-                                            button(id=`upvote-${question.id}` type="button" class="upvote-button") Up Vote
-                                div(class='question-votes-number') #{question.voteCount} Vote
-                                div(class='question-downvote-box')
-                                    form(action='/voting/downvote' method='PATCH')
-                                            button(id=`downvote-${question.id}` type="button" class="downvote-button") Down Vote
-                        div(class='question-content-container')
-                            div(class='question-container')
-                                div(class='question')
-                                    h1.question #{question.question}
-                            div(class='question-user')
-                                div(class='user-info-box')
-                                    div(class='user-info') Asked: #{userQ.createdAt}
-                    //- ul(class='answers box')
-                        //- each answer in question.Answers
-
-//-   //  div(class="question-container")
-//-         h1 #{question.question}
-//-         button(id=`question-upvote-${question.id}` type="button" class="question-upvote-button") Up Vote
-//-         span(id=`question-counter-${question.id}`) #{question.voteCount}
-//-         button(id=`question-downvote-${question.id}` type="button" class="question-downvote-button") Down Vote
-//-             ul
-//-                 each answer in question.Answers
-//-                     li #{answer.answer}
-//-                     button(id=`answer-upvote-${answer.id}` type="button" class="answer-upvote-button") Up Vote
-//-                     span(id=`answer-counter-${answer.id}` class="answer-vote-count") #{answer.voteCount}
-//-                     button(id=`answer-downvote-${answer.id}` type="button" class="answer-downvote-button") Down Vote
-//-         a(role='button' href=`/questions/${question.id}/answers`) Answer
-
-
-
-
-
-
-//- /*
-//- vivian's
-//-     h1.userName #{userQ.userName} asked:
-//-     div.question-container
-//-         div(class="question-box")
-//-             h1.question #{question.question}
-//-             form(action=`/questions/${question.id}/answers`, method="get")
-//-                 button(type='submit' class='answer-btn') Answer
-//-     div.answers
-//-         ul
-//-             each answer in question.Answers
-//-                 h1.userNameAnswers #{userA.userName} answered:
-//-                 div.answer-container
-//-                     li.answer-info-box #{answer.answer}
-//- */
+                        button(class='ask-question-button' type='submit') Ask a Question
+                div(class='question-wrapper')
+                    div(class='question-container')
+                        div(class='question-box')
+                            div(class='question-header')
+                                div
+                                    h1 #{userQ.userName}'s Question
+                                div(class='answer-button-container')
+                                    form(action=`/questions/${question.id}/answers`, method="get")
+                                        button(type='submit' class='answer-btn') Answer
+                            div(class='question-body-box')
+                                div(class='vote-container')
+                                    div(class='question-body')
+                                    if locals.authenticated
+                                        form(action='/voting/upvote/question' method='PATCH')
+                                            //- button(id=`question-upvote-${question.id}` type="button" class="question-upvote-button") Up Vote
+                                            i(class='fas fa-caret-up' style='font-size:50px' id=`question-upvote-${question.id}` type="button" class="question-upvote-button")
+                                    span(id=`question-counter-${question.id}` class='votes-number') #{question.voteCount} Votes
+                                    if locals.authenticated
+                                        form(action='/voting/downvote/question' method='PATCH')
+                                            //- button(id=`question-downvote-${question.id}` type="button" class="question-downvote-button") Down Vote
+                                            i(class='fas fa-caret-down' style='font-size:50px' id=`question-downvote-${question.id}` type="button" class="question-downvote-button")
+                                div(class='question-content-container')
+                                    div(class='question')
+                                        h1.question #{question.question}
+                                    div(class='question-user')
+                                        div(class='user-info-box')
+                                            div(class='user-info') Asked: #{userQ.createdAt}
+                            ul
+                                each answer in question.Answers
+                                    div(class='answer-header')
+                                        div
+                                            h1 Answer
+                                    div(class='answer-body-box')
+                                        div(class='vote-container')
+                                            div(class='question-body')
+                                            if locals.authenticated
+                                                //- form(action='/voting/upvote/question' method='PATCH')
+                                                    //- button(id=`question-upvote-${question.id}` type="button" class="question-upvote-button") Up Vote
+                                                i(class='fas fa-caret-up' style='font-size:50px' id=`answer-upvote-${answer.id}` type="button" class="answer-upvote-button")
+                                            span(id=`answer-counter-${answer.id}` class="answer-vote-count") #{answer.voteCount} Votes
+                                            if locals.authenticated
+                                                //- form(action='/voting/downvote/question' method='PATCH')
+                                                    //- button(id=`question-downvote-${question.id}` type="button" class="question-downvote-button") Down Vote
+                                                i(class='fas fa-caret-down' style='font-size:50px' id=`answer-downvote-${answer.id}` type="button" class="answer-downvote-button")
+                                        div(class='answer-content-container')
+                                            div(class='question')
+                                                h1.question #{answer.answer}
+                                            div(class='question-user')
+                                                div(class='user-info-box')
+                                                    //- div(class='user-info') Answered By: #{userA.userName}

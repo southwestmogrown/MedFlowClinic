@@ -12,6 +12,7 @@ block content
             div.answer-label
                 label(for="answer" class='answer-label') Answer
             textarea(class='answer-field' name="answer", cols="42", rows="20")
-            div.answer-btn
-                button(type="submit") Submit
-    a(href="/") Cancel
+            div(class='answer-btn-container')
+                button(class='submit-btn' type="submit") Submit
+            div
+                a(href="/") Cancel
