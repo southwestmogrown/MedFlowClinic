@@ -169,11 +169,26 @@ label {
   padding-bottom: 5px;
 }
 
-.answer-btn {
+.answer-btn-container {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
+  margin: 6px;
 }
+
+.submit-btn {
+  display: flex;
+  margin-top: 10px;
+  width: 110%;
+  justify-content: center;
+}
+
+
+.cancel-btn {
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
 
 .answer-field {
   border-radius: 5px;
