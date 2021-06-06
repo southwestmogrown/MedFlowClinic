@@ -18,43 +18,45 @@ block content
                                     form(action=`/questions/${question.id}/answers`, method="get")
                                         button(type='submit' class='answer-btn') Answer
                             div(class='question-body-box')
-                                div(class='vote-container')
-                                    div(class='question-body')
-                                    if locals.authenticated
-                                        form(action='/voting/upvote/question' method='PATCH')
-                                            //- button(id=`question-upvote-${question.id}` type="button" class="question-upvote-button") Up Vote
-                                            i(class='fas fa-caret-up' style='font-size:50px' id=`question-upvote-${question.id}` type="button" class="question-upvote-button")
-                                    span(id=`question-counter-${question.id}` class='votes-number') #{question.voteCount} Votes
-                                    if locals.authenticated
-                                        form(action='/voting/downvote/question' method='PATCH')
-                                            //- button(id=`question-downvote-${question.id}` type="button" class="question-downvote-button") Down Vote
-                                            i(class='fas fa-caret-down' style='font-size:50px' id=`question-downvote-${question.id}` type="button" class="question-downvote-button")
+                                div(class='vote-stats-container')
+                                    div(class='vote-container')
+                                        div(class='question-body')
+                                        if locals.authenticated
+                                            form(action='/voting/upvote/question' method='PATCH')
+                                                //- button(id=`question-upvote-${question.id}` type="button" class="question-upvote-button") Up Vote
+                                                i(class='fas fa-caret-up' style='font-size:50px' id=`question-upvote-${question.id}` type="button" class="question-upvote-button")
+                                        span(id=`question-counter-${question.id}` class='votes-number') #{question.voteCount} Votes
+                                        if locals.authenticated
+                                            form(action='/voting/downvote/question' method='PATCH')
+                                                //- button(id=`question-downvote-${question.id}` type="button" class="question-downvote-button") Down Vote
+                                                i(class='fas fa-caret-down' style='font-size:50px' id=`question-downvote-${question.id}` type="button" class="question-downvote-button")
                                 div(class='question-content-container')
                                     div(class='question')
                                         h1.question #{question.question}
-                                    div(class='question-user')
+                                    div(class='user-container')
                                         div(class='user-info-box')
-                                            div(class='user-info') Asked: #{userQ.createdAt}
-                            ul
-                                each answer in question.Answers
-                                    div(class='answer-header')
-                                        div
-                                            h1 Answer
-                                    div(class='answer-body-box')
+                                            div(class='user-info')
+                                                p Asked: #{userQ.createdAt}
+                            each answer in question.Answers
+                                div(class='answer-header')
+                                    div
+                                        h1 Answer
+                                div(class='answer-body-box')
+                                    div(class='vote-stats-container')
                                         div(class='vote-container')
-                                            div(class='question-body')
                                             if locals.authenticated
                                                 //- form(action='/voting/upvote/question' method='PATCH')
                                                     //- button(id=`question-upvote-${question.id}` type="button" class="question-upvote-button") Up Vote
                                                 i(class='fas fa-caret-up' style='font-size:50px' id=`answer-upvote-${answer.id}` type="button" class="answer-upvote-button")
-                                            span(id=`answer-counter-${answer.id}` class="answer-vote-count") #{answer.voteCount} Votes
+                                                div
+                                                    span(id=`answer-counter-${answer.id}` class="answer-vote-count") #{answer.voteCount} Votes
                                             if locals.authenticated
                                                 //- form(action='/voting/downvote/question' method='PATCH')
                                                     //- button(id=`question-downvote-${question.id}` type="button" class="question-downvote-button") Down Vote
                                                 i(class='fas fa-caret-down' style='font-size:50px' id=`answer-downvote-${answer.id}` type="button" class="answer-downvote-button")
-                                        div(class='answer-content-container')
-                                            div(class='question')
-                                                h1.question #{answer.answer}
-                                            div(class='question-user')
-                                                div(class='user-info-box')
-                                                    p Answered By: #{userA.userName}
+                                    div(class='answer-content-container')
+                                        div(class='answer')
+                                            h1.answer #{answer.answer}
+                                        div(class='user-container')
+                                            div(class='user-info')
+                                                h1 Answered By: #{userA.userName}
