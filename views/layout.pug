@@ -14,6 +14,8 @@ html
         div(class='medflow-logo')
           a(href='/' class='home-button') MedFlowClinic
         div(class='navigation-container')
+          span(class='nav-link questions')
+            a(href='/') ? Questions
           a(href='/users/homepage')
             svg(class="user-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000")
               path(d="M0 0h24v24H0V0z" fill="none")
@@ -30,6 +32,8 @@ html
         div(class='medflow-logo')
           a(href='/' class='home-button') MedFlowClinic
         div(class='navigation-container')
+          span(class='nav-link questions')
+            a(href='/') ? Questions
           a(href='/users/register')
             svg(class="user-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000")
               path(d="M0 0h24v24H0V0z" fill="none")
@@ -38,8 +42,8 @@ html
             a(href='/users/register') Register
           span(class="nav-link")
             a(href="/users/login") Login
-        div(class='login-logout-container')
-          a(href='/users/demo')
-          form(action='/users/demo', method='post')
-            button(type='submit') Demo
+          div(class='login-logout-container')
+            a(href='/users/demo')
+            form(action='/users/demo', method='post')
+              button(type='submit') Demo
 block content
