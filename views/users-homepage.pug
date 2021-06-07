@@ -9,6 +9,9 @@ block content
                 h1.user-name #{user.userName}'s Homepage
                 p.user-email #{user.email}
                 p.user-info Professional User
+            div(class='ask-question-bttn')
+                Form(action='/questions/add' method='get')
+                    button(class='ask-question-button' type='submit') Ask a Question
         div(class='user-post-box')
             div(class='user-post-header')
                 h1.questions Questions
@@ -22,4 +25,3 @@ block content
             ul
                 each answer in answers
                     li.post-list #{answer.answer}
-
