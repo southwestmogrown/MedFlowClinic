@@ -8,8 +8,7 @@ const {Question, User} = require("../db/models");
 router.get('/', asyncHandler(async function(req, res, next) {
   const questions = await Question.findAll({
     include: User,
-    order: [["createdAt", "DESC"]],
-    limit: 10
+    order: [["createdAt", "DESC"]]
   });
 
 questions.forEach(question => {
