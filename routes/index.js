@@ -4,7 +4,7 @@ const {asyncHandler} = require('./utils');
 const {Question, User} = require("../db/models");
 
 /* GET home page. */
-//Render 5 most recently asked question
+//Render 10 most recently asked question
 router.get('/', asyncHandler(async function(req, res, next) {
   const questions = await Question.findAll({
     include: User,
@@ -13,7 +13,7 @@ router.get('/', asyncHandler(async function(req, res, next) {
   });
 
 questions.forEach(question => {
-  question.User = question.User.userName;  
+  question.User = question.User.userName;
 });
 
 

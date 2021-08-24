@@ -5,7 +5,7 @@ const { asyncHandler, csrfProtection } = require('./utils');
 const { User, Answer, Question } = require('../db/models');
 const {requireAuth} = require("../auth")
 
-//Render answer page for user to input answer
+//Render answer form for user to input answer
 router.get('/:id(\\d+)/answers', csrfProtection, requireAuth, asyncHandler(async(req, res) => {
     const id = req.params.id;
 
@@ -28,7 +28,7 @@ const answerValidators = [
 ];
 
 
-//post question and redirect to proper question page
+//post answer and redirect to proper question page
 router.post('/:id(\\d+)/answers', csrfProtection, answerValidators, requireAuth, asyncHandler(async(req, res) => {
     const {answer} = req.body;
 
