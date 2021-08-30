@@ -18,6 +18,11 @@ h1 {
     display: grid;
 }
 
+.welcome-message-container {
+    display: flex;
+    justify-content: center;
+}
+
 .page {
     display: grid;
     grid-template-columns: 1fr 10fr;
